@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/BlankAR.unity
+- path: Assets/Scenes/DariasScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
