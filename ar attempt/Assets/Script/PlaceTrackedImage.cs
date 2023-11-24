@@ -77,7 +77,7 @@ public class PlaceTrackedImage : MonoBehaviour
                 Vector3 viewPos = cam.WorldToViewportPoint(obj.transform.position);
                 if (viewPos.x >= 0 && viewPos.x <= 1 && viewPos.y >= 0 && viewPos.y <= 1 && viewPos.z > 0)
                 {
-                    Debug.Log(obj.name);
+                  //  Debug.Log(obj.name);
 
                 }
                 else
