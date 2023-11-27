@@ -36,6 +36,7 @@ public class InteractionScript : MonoBehaviour
     }
     private void FingerDown(EnhancedTouch.Finger finger)
     {
+        Debug.Log("Finger down!");
         if (finger.index != 0) return;
 
         if (aRRaycastManager.Raycast(finger.currentTouch.screenPosition, hits, TrackableType.AllTypes))
