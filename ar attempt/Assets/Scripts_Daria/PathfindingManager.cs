@@ -54,13 +54,6 @@ public class PathfindingManager : MonoBehaviour
 
             findNextNode(queue[i], pTo);
 
-
-            /* 
-             printList(visited);
-             Console.WriteLine("queue: ");
-             printList(queue);
-             Console.WriteLine("path: ");
-             printList(path);*/
         }
         // Reconstruct the path
 
@@ -74,10 +67,9 @@ public class PathfindingManager : MonoBehaviour
         path.Add(pFrom);
 
     }
-    private bool pathFound = false;
     private void findNextNode(Node pFrom, Node pTo)
     {
-        for (int i = 0; i < pFrom.GetConnections().Length; i++)
+        for (int i = 0; i < pFrom.GetConnections().Count; i++)
         {
                 if (checkTakenNodes(pFrom.GetConnections()[i]))
                 {

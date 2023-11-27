@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7309135840259862288}
   - component: {fileID: 788429915354068356}
   - component: {fileID: 2768727742664854158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Room Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,4 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   connections: []
   color: {r: 1, g: 1, b: 1, a: 1}
+  nodeMask:
+    serializedVersion: 2
+    m_Bits: 64
   Previous: {fileID: 0}

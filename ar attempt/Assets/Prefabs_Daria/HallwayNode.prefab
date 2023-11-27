@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3111948773204410199}
   - component: {fileID: 4722739448413903427}
   - component: {fileID: 4679807916492517071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HallwayNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,5 +121,8 @@ MonoBehaviour:
   connections:
   - {fileID: 0}
   - {fileID: 0}
-  color: {r: 1, g: 0, b: 0, a: 0.5019608}
+  color: {r: 1, g: 1, b: 1, a: 0.5019608}
+  nodeMask:
+    serializedVersion: 2
+    m_Bits: 64
   Previous: {fileID: 0}
