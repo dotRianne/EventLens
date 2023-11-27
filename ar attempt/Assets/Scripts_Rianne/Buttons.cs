@@ -6,8 +6,9 @@ using Unity.VisualScripting;
 public class Buttons : MonoBehaviour
 {
     public GameObject menu;
-    public GameObject nonMenu;
+    public GameObject HUD;
     public GameObject exitMenu;
+    public GameObject interactions;
     public void OpenMenu()
     {
         ResetEverything();
@@ -17,13 +18,19 @@ public class Buttons : MonoBehaviour
     public void CloseMenu()
     {
         ResetEverything();
-        nonMenu.SetActive(true);
+        HUD.SetActive(true);
     }
 
     public void ExitMenu()
     {
         ResetEverything();
         exitMenu.SetActive(true);
+    }
+    public void CloseInteractions()
+    {
+        ResetEverything();
+        Debug.Log("DISABLE INTERACTIONS!");
+        HUD.SetActive(true);
     }
 
     public void CloseApplication()
@@ -35,7 +42,8 @@ public class Buttons : MonoBehaviour
     public void ResetEverything()
     {
         menu.SetActive(false);
-        nonMenu.SetActive(false);
+        HUD.SetActive(false);
         exitMenu.SetActive(false);
+        interactions.SetActive(false);
     }    
 }

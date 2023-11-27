@@ -18,8 +18,8 @@ public class InteractionScript : MonoBehaviour
     void Awake()
     {
         aRRaycastManager = GetComponent<ARRaycastManager>();
-        aRPlaneManager = GetComponent<ARPlaneManager>();
-        interactionCanvas = GameObject.Find("InteractCanvas");
+            aRPlaneManager = GetComponent<ARPlaneManager>();
+            interactionCanvas = GameObject.Find("InteractCanvas");
     }
     private void OnEnable()
     {
@@ -32,31 +32,30 @@ public class InteractionScript : MonoBehaviour
     {
         EnhancedTouch.TouchSimulation.Disable();
         EnhancedTouch.EnhancedTouchSupport.Disable();
-        EnhancedTouch.Touch.onFingerDown -= FingerDown;
+        EnhancedTouch.Touch.onFingerUp -= FingerDown;
     }
     private void FingerDown(EnhancedTouch.Finger finger)
     {
+        Debug.Log("Finger down! " + finger.index + " at " + finger.currentTouch.screenPosition);
         if (finger.index != 0) return;
+        Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
+        Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);
+        RaycastHit hit;
+            Physics.Raycast(ray, out hit);
+        Debug.Log("Hit: " + hit.collider);
 
-        if (aRRaycastManager.Raycast(finger.currentTouch.screenPosition, hits))
+        // Perform raycasting
+        if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
-            Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit hit;
-
-            // Perform raycasting
-            if (Physics.Raycast(ray, out hit))
+            Debug.Log("tag: " + hit.collider.tag + ", position: " + hit.transform.position + ", ray: " + ray);
+            // Check if the object has a specific tag (you can customize this)
+            if (hit.collider.name == "one" || hit.collider.name == "two")
             {
-                Debug.Log("tag: " + hit.collider.tag + ", position: " + hit.transform.position + ", ray: " + ray);
-                // Check if the object has a specific tag (you can customize this)
-                if (hit.collider.tag == "Untagged")
-                {
-                    // Show interaction canvas
-                    ShowInteractionCanvas();
+                // Show interaction canvas
+                ShowInteractionCanvas();
 
-                    // Perform actions based on the hit object
-                    HandleObjectInteraction(hit.collider.gameObject);
-                }
+                // Perform actions based on the hit object
+                HandleObjectInteraction(hit.collider.gameObject);
             }
         }
     }
