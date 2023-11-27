@@ -7,8 +7,9 @@ using UnityEngine.XR.ARSubsystems;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 using TMPro;
 public class InteractionScript : MonoBehaviour
-{
-    public GameObject interactionCanvas;
+{ 
+    public Buttons buttons;
+    internal bool canSendRaycasts = true;
 
     [SerializeField] LayerMask layerMask;
     private ARRaycastManager aRRaycastManager;
@@ -17,9 +18,9 @@ public class InteractionScript : MonoBehaviour
 
     void Awake()
     {
+        buttons = GetComponent<Buttons>();
         aRRaycastManager = GetComponent<ARRaycastManager>();
-            aRPlaneManager = GetComponent<ARPlaneManager>();
-            interactionCanvas = GameObject.Find("InteractCanvas");
+        aRPlaneManager = GetComponent<ARPlaneManager>();
     }
     private void OnEnable()
     {
@@ -36,48 +37,29 @@ public class InteractionScript : MonoBehaviour
     }
     private void FingerDown(EnhancedTouch.Finger finger)
     {
-        Debug.Log("Finger down! " + finger.index + " at " + finger.currentTouch.screenPosition);
+        Debug.Log(canSendRaycasts);
+//        Debug.Log("Finger down! " + finger.index + " at " + finger.currentTouch.screenPosition);
         if (finger.index != 0) return;
-        Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
+//        Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
+        if (canSendRaycasts)
+        {
         Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);
         RaycastHit hit;
-            Physics.Raycast(ray, out hit);
+        Physics.Raycast(ray, out hit);
+
         Debug.Log("Hit: " + hit.collider);
-
-        // Perform raycasting
-        if (Physics.Raycast(ray, out hit))
-        {
-            Debug.Log("tag: " + hit.collider.tag + ", position: " + hit.transform.position + ", ray: " + ray);
-            // Check if the object has a specific tag (you can customize this)
-            if (hit.collider.name == "one" || hit.collider.name == "two")
+            // Perform raycasting
+            if (Physics.Raycast(ray, out hit))
             {
-                // Show interaction canvas
-                ShowInteractionCanvas();
-
-                // Perform actions based on the hit object
-                HandleObjectInteraction(hit.collider.gameObject);
+//                Debug.Log("tag: " + hit.collider.tag + ", position: " + hit.transform.position + ", ray: " + ray);
+                // Check if the object has a specific tag (you can customize this)
+                Debug.Log(hit.collider.name);
+                if (hit.collider.name == "one" || hit.collider.name == "two")
+                {
+                    Debug.Log("THIS IS ONE OR TWO: " + hit.collider.name);
+                    buttons.OpenInteractions("Joeri 1 2 3");
+                }
             }
         }
-    }
-
-    public void ShowInteractionCanvas()
-    {
-        // Enable the canvas and set its position
-        interactionCanvas.SetActive(true);
-    }
-
-    public void HandleObjectInteraction(GameObject interactableObject)
-    {
-        // Customize this method based on the specific interactions you want
-        // For example, update UI text with information about the object
-        TMP_Text uiText = interactionCanvas.GetComponentInChildren<TMP_Text>();
-        uiText.text = "Hello I am " + interactableObject.name + ", How nice to meet you!";
-
-        // You can add more interactions here, like playing animations, spawning objects, etc.
-    }
-
-    public void CloseInteractionMenu()
-    {
-        interactionCanvas.SetActive(false);
     }
 }
