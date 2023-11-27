@@ -7,8 +7,7 @@ public class PathfindingManager : MonoBehaviour
 {
     Node[] nodes;
     public Node nodeStart;
-    [SerializeField]
-    Node nodeEnd;
+    public Node nodeEnd;
 
     // Start is called before the first frame update
     void Start()
