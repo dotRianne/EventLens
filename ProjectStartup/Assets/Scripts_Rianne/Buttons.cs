@@ -10,26 +10,20 @@ public class Buttons : MonoBehaviour
     public GameObject exitMenu;
     public void OpenMenu()
     {
+        ResetEverything();
         menu.SetActive(true);
-        nonMenu.SetActive(false);
-        exitMenu.SetActive(false);
-        Debug.Log("Opening menu!");
     }
 
     public void CloseMenu()
     {
-        menu.SetActive(false);
+        ResetEverything();
         nonMenu.SetActive(true);
-        exitMenu.SetActive(false);
-        Debug.Log("Closing menu!");
     }
 
     public void ExitMenu()
     {
-        menu.SetActive(false);
-        nonMenu.SetActive(false);
+        ResetEverything();
         exitMenu.SetActive(true);
-        Debug.Log("Exit game?");
     }
 
     public void CloseApplication()
@@ -37,4 +31,11 @@ public class Buttons : MonoBehaviour
         Application.Quit();
         Debug.Log("Closing app!");
     }
+
+    public void ResetEverything()
+    {
+        menu.SetActive(false);
+        nonMenu.SetActive(false);
+        exitMenu.SetActive(false);
+    }    
 }
