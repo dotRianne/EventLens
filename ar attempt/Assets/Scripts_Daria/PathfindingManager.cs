@@ -6,8 +6,7 @@ using UnityEngine;
 public class PathfindingManager : MonoBehaviour
 {
     Node[] nodes;
-    [SerializeField]
-    Node nodeStart;
+    public Node nodeStart;
     [SerializeField]
     Node nodeEnd;
 
