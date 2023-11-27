@@ -26,7 +26,7 @@ public class RotateTowardsCamera : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Main camera not found. Make sure there is a camera in the scene.");
+            Debug.LogWarning("Main camera not found.");
         }
     }
 }
