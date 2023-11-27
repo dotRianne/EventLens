@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ExampleAssets/Scenes/DariaScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/ExampleAssets/Scenes/RianneScene.unity
+    guid: d4a488000de8e0d419f3b97a0ee3dba8
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: 744b813df90924c169af73489b8325de,
       type: 2}
