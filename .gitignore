@@ -16,6 +16,13 @@
 /ProjectStartup/[Bb]uilds/
 /ProjectStartup/[Ll]ogs/
 /ProjectStartup/[Uu]ser[Ss]ettings/
+/ar attempt/[Ll]ibrary/
+/ar attempt/[Tt]emp/
+/ar attempt/[Oo]bj/
+/ar attempt/[Bb]uild/
+/ar attempt/[Bb]uilds/
+/ar attempt/[Ll]ogs/
+/ar attempt/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
