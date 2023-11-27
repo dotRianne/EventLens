@@ -10,7 +10,7 @@ public class InteractionScript : MonoBehaviour
 {
     public GameObject interactionCanvas;
 
-
+    [SerializeField] LayerMask layerMask;
     private ARRaycastManager aRRaycastManager;
     private ARPlaneManager aRPlaneManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -36,11 +36,11 @@ public class InteractionScript : MonoBehaviour
     }
     private void FingerDown(EnhancedTouch.Finger finger)
     {
-        Debug.Log("Finger down!");
         if (finger.index != 0) return;
 
-        if (aRRaycastManager.Raycast(finger.currentTouch.screenPosition, hits, TrackableType.AllTypes))
+        if (aRRaycastManager.Raycast(finger.currentTouch.screenPosition, hits))
         {
+            Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
 
