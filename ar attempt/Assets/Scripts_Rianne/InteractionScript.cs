@@ -6,14 +6,22 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 using TMPro;
+using Unity.VisualScripting.Dependencies.NCalc;
+
 public class InteractionScript : MonoBehaviour
 { 
     public Buttons buttons;
     internal bool canSendRaycasts = true;
 
 
-    [SerializeField] private string joeriText = "";
-    [SerializeField] private string markText = "";
+
+    [SerializeField] private string[] npcNames;
+    [SerializeField] private string[] npcTexts;
+    private Dictionary<string, string> npcDict = new Dictionary<string, string>();
+    [SerializeField] private string[] infoNames;
+    [SerializeField] private string[] infoTexts;
+    private Dictionary<string, string> infoDict = new Dictionary<string, string>();
+
     //[SerializeField] LayerMask layerMask;
     private ARRaycastManager aRRaycastManager;
     private ARPlaneManager aRPlaneManager;
@@ -24,6 +32,9 @@ public class InteractionScript : MonoBehaviour
         buttons = GetComponent<Buttons>();
         aRRaycastManager = GetComponent<ARRaycastManager>();
         aRPlaneManager = GetComponent<ARPlaneManager>();
+
+        for(int i = 0; i < npcNames.Length; i++) npcDict.Add(npcNames[i], npcTexts[i]);
+        for(int i = 0; i < infoNames.Length; i++) infoDict.Add(infoNames[i], infoTexts[i]);
     }
     private void OnEnable()
     {
@@ -49,15 +60,13 @@ public class InteractionScript : MonoBehaviour
             // Perform raycasting
             if (Physics.Raycast(ray, out hit))
             {
-                // Check if the object has a specific tag (you can customize this)
-                switch(hit.collider.name)
+                if(npcDict.ContainsKey(hit.collider.name))
                 {
-                    case "one":
-                        buttons.OpenInteractions(joeriText);
-                        break;
-                    case "two":
-                        buttons.OpenInteractions(markText);
-                        break;
+                    buttons.OpenInteractions(npcDict[hit.collider.name]);
+                }
+                if (infoDict.ContainsKey(hit.collider.name))
+                {
+                    buttons.OpenInformations(infoDict[hit.collider.name]);
                 }
             }
         }
