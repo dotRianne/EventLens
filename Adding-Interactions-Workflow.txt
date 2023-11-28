@@ -1,0 +1,43 @@
+---ADDING AN NPC---
+Step 1: 
+Click "Manager" in hierarchy.
+Step 2:
+Add an element to "NPC Names" 
+- Name it "npc[Name]"
+Step 3:
+Add an element to "NPC Texts" 
+- Write your text.
+Step 4: 
+Click TrackedImgInfo in hierarchy.
+Step 5:
+Add an element to "Object Prefabs"
+- Drag in your Prefab (Prefab name needs to be "npc[Name]")
+Step 6:
+In the Assets folder, Click "Reference Image Library"
+Step 7:
+Click "Add Image" 
+- set the name to "npc[Name]"
+- Set the 2d texture to your image
+
+
+
+---ADDING AN INTERACTABLE OBJECT---
+Step 1:
+Click "Manager" in hierarchy.
+Step 2:
+Add an element to "Info Names" 
+- Name it "info[Name]"
+Step 3:
+Add an element to "Info Texts" 
+- Write your text.
+Step 4: 
+Click TrackedImgInfo in hierarchy.
+Step 5:
+Add an element to "Object Prefabs"
+- Drag in your Prefab (Prefab name needs to be "info[Name]")
+Step 6:
+In the Assets folder, Click "Reference Image Library"
+Step 7:
+Click "Add Image" 
+- set the name to "info[Name]"
+- Set the 2d texture to your image

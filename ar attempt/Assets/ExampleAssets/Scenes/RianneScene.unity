@@ -1043,6 +1043,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404167345305300502, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 404167345305300502, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseInformations
+      objectReference: {fileID: 0}
+    - target: {fileID: 887626833542512123, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+        type: 3}
+      propertyPath: m_text
+      value: Close information
+      objectReference: {fileID: 0}
     - target: {fileID: 1208118001252588344, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1203,6 +1218,12 @@ GameObject:
 --- !u!1 &754327714 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5083687840367749511, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 754327711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &754327716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 448505652117269505, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
     type: 3}
   m_PrefabInstance: {fileID: 754327711}
   m_PrefabAsset: {fileID: 0}
@@ -1977,6 +1998,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 38387885}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1718622453 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7114040333915233047, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 754327711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1771044482 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2783100003078000061, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
@@ -2262,6 +2295,66 @@ PrefabInstance:
       value: Hey my name is Joeri! I teach Business thinking here! I'm always open
         for a chat, a fun game or a bet of the sorts! Happy to see you!!
       objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcNames.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcTexts.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: infoNames.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: infoTexts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcNames.Array.data[0]
+      value: npcJoeri
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcNames.Array.data[1]
+      value: npcMark
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcNames.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcTexts.Array.data[0]
+      value: Hello I'm Joeri!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcTexts.Array.data[1]
+      value: Hello I'm Mark!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: npcTexts.Array.data[2]
+      value: Hello I'm Timmy!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: infoNames.Array.data[0]
+      value: infoWorkshop
+      objectReference: {fileID: 0}
+    - target: {fileID: 3701620861998220439, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: infoTexts.Array.data[0]
+      value: Here you can find information about the workshop
+      objectReference: {fileID: 0}
     - target: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
         type: 3}
       propertyPath: HUD
@@ -2279,9 +2372,19 @@ PrefabInstance:
       objectReference: {fileID: 754327712}
     - target: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
         type: 3}
+      propertyPath: informations
+      value: 
+      objectReference: {fileID: 754327716}
+    - target: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
       propertyPath: interactions
       value: 
       objectReference: {fileID: 1771044482}
+    - target: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
+        type: 3}
+      propertyPath: informationsText
+      value: 
+      objectReference: {fileID: 1718622453}
     - target: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
         type: 3}
       propertyPath: interactionsText
