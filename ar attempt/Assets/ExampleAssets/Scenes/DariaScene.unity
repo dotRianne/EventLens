@@ -198,8 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af81f4a0aa416624398554f1e438f315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeStart: {fileID: 1207865522}
+  nodeStart: {fileID: 0}
   nodeEnd: {fileID: 1087276457842608172}
+  currentNode: {fileID: 0}
 --- !u!1001 &96358530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -261,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
@@ -287,7 +288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: connections.Array.data[4]
       value: 
-      objectReference: {fileID: 2028065671}
+      objectReference: {fileID: 1702624007}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.data[5]
@@ -8096,7 +8097,7 @@ PrefabInstance:
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
@@ -8127,7 +8128,7 @@ PrefabInstance:
         type: 3}
       propertyPath: connections.Array.data[5]
       value: 
-      objectReference: {fileID: 1207865522}
+      objectReference: {fileID: 1321039364}
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
@@ -8414,7 +8415,7 @@ PrefabInstance:
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
@@ -8445,7 +8446,7 @@ PrefabInstance:
         type: 3}
       propertyPath: connections.Array.data[5]
       value: 
-      objectReference: {fileID: 1968049708}
+      objectReference: {fileID: 512028038}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.data[6]
@@ -10409,7 +10410,7 @@ PrefabInstance:
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
@@ -10430,7 +10431,7 @@ PrefabInstance:
         type: 3}
       propertyPath: connections.Array.data[3]
       value: 
-      objectReference: {fileID: 1996254738}
+      objectReference: {fileID: 216143027}
     - target: {fileID: 4679807916492517071, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: connections.Array.data[4]

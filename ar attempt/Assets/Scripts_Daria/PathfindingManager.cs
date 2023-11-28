@@ -9,6 +9,10 @@ public class PathfindingManager : MonoBehaviour
     public Node nodeStart;
     public Node nodeEnd;
 
+    public Node currentNode;
+    private List<Node> currentPath = new List<Node>();
+    enum pathState {idle, pathFound, pathEndReached };
+    pathState state = pathState.idle;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +23,17 @@ public class PathfindingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // after path selected
+    }
+
+    //button click - > new pTo - > create path - > go trhourgh the path
+    public void newPathRequested(Node pTo) // from ui when 
+    {
+        nodeEnd = pTo;
+        nodeStart = currentNode;
+        currentPath= generate(nodeStart, nodeEnd);
         
+        //queue
     }
 
     List<Node> visited = new List<Node>();
