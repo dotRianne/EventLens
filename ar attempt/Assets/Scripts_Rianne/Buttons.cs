@@ -11,6 +11,7 @@ public class Buttons : MonoBehaviour
     public GameObject HUD;
     public GameObject exitMenu;
     public GameObject interactions;
+    public GameObject map;
     public GameObject informations;
     public TMP_Text interactionsText;
     public TMP_Text informationsText;
@@ -53,6 +54,20 @@ public class Buttons : MonoBehaviour
         ResetEverything();
         HUD.SetActive(true);
     }
+
+    public void OpenMap()
+    {
+        interactionScript.canSendRaycasts = false;
+        ResetEverything();
+        map.SetActive(true);
+    }
+    public void CloseMap()
+    {
+        interactionScript.canSendRaycasts = true;
+        ResetEverything();
+        HUD.SetActive(true);
+    }
+
     public void OpenInformations(string text)
     {
         interactionScript.canSendRaycasts = false;
@@ -79,6 +94,7 @@ public class Buttons : MonoBehaviour
         HUD.SetActive(false);
         exitMenu.SetActive(false);
         interactions.SetActive(false);
+        map.SetActive(false);
         informations.SetActive(false);
     }    
 }
