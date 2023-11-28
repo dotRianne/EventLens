@@ -104,11 +104,11 @@ public class PlaceTrackedImage : MonoBehaviour
     {
         string name = trackedImage.referenceImage.name;
         Vector3 pos = trackedImage.transform.position;
+        //check if npc
         if (name.StartsWith("npc"))
-        { 
-            pos.y += 0.5f; 
+        {
+            pos.y += 0.5f;
         }
-
         GameObject prefab = spawnedPrefabs[name];
         prefab.transform.position = pos;
         prefab.SetActive(true);
