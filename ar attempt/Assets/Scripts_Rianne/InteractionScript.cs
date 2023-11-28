@@ -6,12 +6,23 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 using TMPro;
+using Unity.VisualScripting.Dependencies.NCalc;
+
 public class InteractionScript : MonoBehaviour
 { 
     public Buttons buttons;
     internal bool canSendRaycasts = true;
 
-    [SerializeField] LayerMask layerMask;
+
+
+    [SerializeField] private string[] npcNames;
+    [SerializeField] private string[] npcTexts;
+    private Dictionary<string, string> npcDict = new Dictionary<string, string>();
+    [SerializeField] private string[] infoNames;
+    [SerializeField] private string[] infoTexts;
+    private Dictionary<string, string> infoDict = new Dictionary<string, string>();
+
+    //[SerializeField] LayerMask layerMask;
     private ARRaycastManager aRRaycastManager;
     private ARPlaneManager aRPlaneManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -21,6 +32,9 @@ public class InteractionScript : MonoBehaviour
         buttons = GetComponent<Buttons>();
         aRRaycastManager = GetComponent<ARRaycastManager>();
         aRPlaneManager = GetComponent<ARPlaneManager>();
+
+        for(int i = 0; i < npcNames.Length; i++) npcDict.Add(npcNames[i], npcTexts[i]);
+        for(int i = 0; i < infoNames.Length; i++) infoDict.Add(infoNames[i], infoTexts[i]);
     }
     private void OnEnable()
     {
@@ -38,26 +52,21 @@ public class InteractionScript : MonoBehaviour
     private void FingerDown(EnhancedTouch.Finger finger)
     {
         Debug.Log(canSendRaycasts);
-//        Debug.Log("Finger down! " + finger.index + " at " + finger.currentTouch.screenPosition);
         if (finger.index != 0) return;
-//        Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
         if (canSendRaycasts)
         {
-        Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit);
-
-        Debug.Log("Hit: " + hit.collider);
+            Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);
+            RaycastHit hit;
             // Perform raycasting
             if (Physics.Raycast(ray, out hit))
             {
-//                Debug.Log("tag: " + hit.collider.tag + ", position: " + hit.transform.position + ", ray: " + ray);
-                // Check if the object has a specific tag (you can customize this)
-                Debug.Log(hit.collider.name);
-                if (hit.collider.name == "one" || hit.collider.name == "two")
+                if(npcDict.ContainsKey(hit.collider.name))
                 {
-                    Debug.Log("THIS IS ONE OR TWO: " + hit.collider.name);
-                    buttons.OpenInteractions("Joeri 1 2 3");
+                    buttons.OpenInteractions(npcDict[hit.collider.name]);
+                }
+                if (infoDict.ContainsKey(hit.collider.name))
+                {
+                    buttons.OpenInformations(infoDict[hit.collider.name]);
                 }
             }
         }

@@ -25,7 +25,7 @@ MonoBehaviour:
       m_GuidHigh: 10677130273123681019
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: one
+    m_Name: npcJoeri
     m_Texture: {fileID: 2800000, guid: d1879707d69d24adfb421bde69c92c94, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5284427955685104951
@@ -35,7 +35,7 @@ MonoBehaviour:
       m_GuidHigh: 13653593495684243370
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: two
+    m_Name: infoWorkshop
     m_Texture: {fileID: 2800000, guid: 038b8a7b4862745aaadfd7c9f14e7bbd, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5519990603769907815
@@ -45,5 +45,5 @@ MonoBehaviour:
       m_GuidHigh: 15012178256694037273
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: test
+    m_Name: Timmy
     m_Texture: {fileID: 2800000, guid: ea8ce8ab970a7994194b172796f855d0, type: 3}
