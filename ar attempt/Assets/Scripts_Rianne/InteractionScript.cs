@@ -11,7 +11,10 @@ public class InteractionScript : MonoBehaviour
     public Buttons buttons;
     internal bool canSendRaycasts = true;
 
-    [SerializeField] LayerMask layerMask;
+
+    [SerializeField] private string joeriText = "";
+    [SerializeField] private string markText = "";
+    //[SerializeField] LayerMask layerMask;
     private ARRaycastManager aRRaycastManager;
     private ARPlaneManager aRPlaneManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -38,26 +41,23 @@ public class InteractionScript : MonoBehaviour
     private void FingerDown(EnhancedTouch.Finger finger)
     {
         Debug.Log(canSendRaycasts);
-//        Debug.Log("Finger down! " + finger.index + " at " + finger.currentTouch.screenPosition);
         if (finger.index != 0) return;
-//        Debug.Log("Raycast sent! sent at: " + finger.currentTouch.screenPosition);
         if (canSendRaycasts)
         {
-        Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);
-        RaycastHit hit;
-        Physics.Raycast(ray, out hit);
-
-        Debug.Log("Hit: " + hit.collider);
+            Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);
+            RaycastHit hit;
             // Perform raycasting
             if (Physics.Raycast(ray, out hit))
             {
-//                Debug.Log("tag: " + hit.collider.tag + ", position: " + hit.transform.position + ", ray: " + ray);
                 // Check if the object has a specific tag (you can customize this)
-                Debug.Log(hit.collider.name);
-                if (hit.collider.name == "one" || hit.collider.name == "two")
+                switch(hit.collider.name)
                 {
-                    Debug.Log("THIS IS ONE OR TWO: " + hit.collider.name);
-                    buttons.OpenInteractions("Joeri 1 2 3");
+                    case "one":
+                        buttons.OpenInteractions(joeriText);
+                        break;
+                    case "two":
+                        buttons.OpenInteractions(markText);
+                        break;
                 }
             }
         }
