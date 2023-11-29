@@ -46,7 +46,7 @@ public class PathfindingManager : MonoBehaviour
     public void newPathRequested(Node pTo) // from ui when loation pressed
     {
         nodeEnd = pTo;
-        if (currentNode)
+        if (currentNode!= null)
         {
             nodeStart = currentNode;
         }
@@ -57,6 +57,9 @@ public class PathfindingManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("nodestart: "+ nodeStart);
+            Debug.Log("nodeEnd: " + nodeEnd);
+
             Debug.Log("node start or node end missing ");
         }
 
