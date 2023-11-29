@@ -50,7 +50,6 @@ public class InteractionScript : MonoBehaviour
     private void FingerDown(EnhancedTouch.Finger finger)
     {
         if (finger.index != 0) return;
-        Debug.Log("Can send raycasts: " + canSendRaycasts);
         if (canSendRaycasts)
         {
             Ray ray = Camera.main.ScreenPointToRay(finger.currentTouch.screenPosition);

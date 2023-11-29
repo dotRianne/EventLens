@@ -240,10 +240,60 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1127906238033362727, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeWorkshop2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1452508751117192197, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeToilet2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1759578002996538033, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeArcade
+      objectReference: {fileID: 0}
+    - target: {fileID: 2097165563914384107, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: nodeEnd
+      value: 
+      objectReference: {fileID: 91624619}
+    - target: {fileID: 2097165563914384107, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: nodeStart
+      value: 
+      objectReference: {fileID: 771721674}
+    - target: {fileID: 2126063371005697624, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeWorkshop3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2403881887616850862, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeHallway5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3160351304341083338, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeToilet1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3266571191083734048, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeStart
+      objectReference: {fileID: 0}
     - target: {fileID: 4087516530362155682, guid: 03d631efbad514140b9f8602a821ea26,
         type: 3}
       propertyPath: m_Name
       value: Digital Map Enviroment
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236072993267141352, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeTeachers
       objectReference: {fileID: 0}
     - target: {fileID: 4249555178138180085, guid: 03d631efbad514140b9f8602a821ea26,
         type: 3}
@@ -314,6 +364,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5777730783397882116, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeWorkshop1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6133215175519925409, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeHallway2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6481006546661737154, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeHallway3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075405986453104599, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodePointandclick
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179940929606274923, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeBoardgames
+      objectReference: {fileID: 0}
+    - target: {fileID: 8382355826659130083, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeHallway4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397664925648009411, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeHallway1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8665073493550271077, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: m_Name
+      value: nodeHallway6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -555,8 +645,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
-        type: 3}
+      objectReference: {fileID: 117914898}
     - target: {fileID: 404167345305300502, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -618,6 +707,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 117914898}
+    - target: {fileID: 1312098759668925563, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseInteractions
+      objectReference: {fileID: 0}
     - target: {fileID: 1739121839660262930, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
         type: 3}
       propertyPath: m_Name
@@ -770,8 +864,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 3773242876816608582, guid: e0b9152451d85d643ad949790ecfddee,
-        type: 3}
+      objectReference: {fileID: 117914898}
     - target: {fileID: 5136377862575291670, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1064,7 +1157,17 @@ PrefabInstance:
     - target: {fileID: 7859760928524762681, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825711432252672405, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 117914898}
+    - target: {fileID: 8825711432252672405, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenMap
       objectReference: {fileID: 0}
     - target: {fileID: 8904067395322129491, guid: 8617e27b0838fc74e9f7fef3c0c666ae,
         type: 3}

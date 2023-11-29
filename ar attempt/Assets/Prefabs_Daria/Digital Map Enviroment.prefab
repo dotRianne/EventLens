@@ -776,11 +776,11 @@ Transform:
   - {fileID: 5967355017162983394}
   - {fileID: 850202298552899113}
   - {fileID: 7268918569229418694}
-  - {fileID: 5961353542720277076}
+  - {fileID: 6562845449007716361}
   - {fileID: 8498923448729870052}
   - {fileID: 2239748755284655368}
   - {fileID: 4655755089140820779}
-  - {fileID: 6562845449007716361}
+  - {fileID: 5961353542720277076}
   - {fileID: 5751478974234437275}
   - {fileID: 3755539493299700545}
   - {fileID: 5640188824946658855}
@@ -1783,7 +1783,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node (2)
+      value: nodeHallway2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1819,7 +1819,7 @@ PrefabInstance:
     - target: {fileID: 2231977470437424228, guid: b35b54dad63cbe04a9b82a8443ce9a8d,
         type: 3}
       propertyPath: m_Name
-      value: Expo Node 2
+      value: nodeArcade
       objectReference: {fileID: 0}
     - target: {fileID: 3642442555062195604, guid: b35b54dad63cbe04a9b82a8443ce9a8d,
         type: 3}
@@ -9655,7 +9655,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node (3)
+      value: nodeHallway3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9776,7 +9776,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node (4)
+      value: nodeHallway4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9902,7 +9902,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node (1)
+      value: nodeHallway1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10008,7 +10008,7 @@ PrefabInstance:
     - target: {fileID: 8468879845390149552, guid: 89a49651634bf4541ac9b00e220c542e,
         type: 3}
       propertyPath: m_Name
-      value: Room Node (3)
+      value: nodeWorkshop1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10119,7 +10119,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node (6)
+      value: nodeHallway6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10235,7 +10235,7 @@ PrefabInstance:
     - target: {fileID: 8468879845390149552, guid: 89a49651634bf4541ac9b00e220c542e,
         type: 3}
       propertyPath: m_Name
-      value: Room Node (2)
+      value: nodeTeachers
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10361,7 +10361,7 @@ PrefabInstance:
     - target: {fileID: 8468879845390149552, guid: 89a49651634bf4541ac9b00e220c542e,
         type: 3}
       propertyPath: m_Name
-      value: Room Node
+      value: nodeToilet1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10472,7 +10472,7 @@ PrefabInstance:
     - target: {fileID: 8468879845390149552, guid: 89a49651634bf4541ac9b00e220c542e,
         type: 3}
       propertyPath: m_Name
-      value: Room Node (5)
+      value: nodeToilet2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10593,7 +10593,7 @@ PrefabInstance:
     - target: {fileID: 8468879845390149552, guid: 89a49651634bf4541ac9b00e220c542e,
         type: 3}
       propertyPath: m_Name
-      value: Room Node (1)
+      value: nodeWorkshop3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10729,7 +10729,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node (5)
+      value: nodeHallway5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10840,7 +10840,7 @@ PrefabInstance:
     - target: {fileID: 6295546685629391642, guid: 0cfe45c7562ed9f4bacb91df2c863bc0,
         type: 3}
       propertyPath: m_Name
-      value: Node
+      value: nodeExit
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10946,7 +10946,7 @@ PrefabInstance:
     - target: {fileID: 8468879845390149552, guid: 89a49651634bf4541ac9b00e220c542e,
         type: 3}
       propertyPath: m_Name
-      value: Room Node (4)
+      value: nodeWorkshop2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10982,7 +10982,7 @@ PrefabInstance:
     - target: {fileID: 2231977470437424228, guid: b35b54dad63cbe04a9b82a8443ce9a8d,
         type: 3}
       propertyPath: m_Name
-      value: Expo Node 3
+      value: nodePointclick
       objectReference: {fileID: 0}
     - target: {fileID: 3642442555062195604, guid: b35b54dad63cbe04a9b82a8443ce9a8d,
         type: 3}
@@ -11098,7 +11098,7 @@ PrefabInstance:
     - target: {fileID: 2231977470437424228, guid: b35b54dad63cbe04a9b82a8443ce9a8d,
         type: 3}
       propertyPath: m_Name
-      value: Expo Node
+      value: nodeBoard
       objectReference: {fileID: 0}
     - target: {fileID: 3642442555062195604, guid: b35b54dad63cbe04a9b82a8443ce9a8d,
         type: 3}
