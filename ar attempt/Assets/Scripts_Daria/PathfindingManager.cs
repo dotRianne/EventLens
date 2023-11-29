@@ -24,16 +24,60 @@ public class PathfindingManager : MonoBehaviour
     void Update()
     {
         // after path selected
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            goThroughQueue();
+        }
+
+        if(state == pathState.pathEndReached)
+        {
+            //
+            path = null;
+            state = pathState.idle;
+        }
     }
 
     //button click - > new pTo - > create path - > go trhourgh the path
-    public void newPathRequested(Node pTo) // from ui when 
+    public void newPathRequested(Node pTo) // from ui when loation pressed
     {
         nodeEnd = pTo;
         nodeStart = currentNode;
         currentPath= generate(nodeStart, nodeEnd);
-        
-        //queue
+    }
+
+
+
+    Node nextNode;
+    int nodeIndex = 0;
+
+    public void nodeReached(Node activeNode) //called in image tracking when a node
+    {
+        currentNode = activeNode;
+        if (activeNode == nextNode)
+        {
+            
+            //go next node
+            goThroughQueue(); 
+        }
+        else
+        {
+            //recalculate path
+        }
+    }
+
+    void goThroughQueue()
+    {
+        if (nodeIndex < path.Count)
+        {
+            nodeIndex++;
+            nextNode = path[nodeIndex];
+        }
+        else
+        {
+            //path finisehd
+            state = pathState.pathEndReached;
+        }
+        Debug.Log("nextNode: " + nextNode.name);
     }
 
     List<Node> visited = new List<Node>();
