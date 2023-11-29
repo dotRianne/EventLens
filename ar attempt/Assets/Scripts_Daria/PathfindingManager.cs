@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PathfindingManager : MonoBehaviour
 {
+    //things to test: canceling path, normal path, path recalculation when wrong place reached, path recalculation when end changed, creating a ne wpath
+
     Node[] nodes;
     public Node nodeStart;
     public Node nodeEnd;
@@ -17,7 +19,10 @@ public class PathfindingManager : MonoBehaviour
     void Start()
     {
         nodes = FindObjectsOfType<Node>();
-        generate(nodeStart, nodeEnd);
+        if (nodeStart != null && nodeEnd != null)
+        {
+            generate(nodeStart, nodeEnd);
+        }
     }
 
     // Update is called once per frame
@@ -32,7 +37,7 @@ public class PathfindingManager : MonoBehaviour
         if(state == pathState.pathEndReached)
         {
             //
-            path = null;
+            currentPath = null;
             state = pathState.idle;
         }
     }
@@ -41,8 +46,20 @@ public class PathfindingManager : MonoBehaviour
     public void newPathRequested(Node pTo) // from ui when loation pressed
     {
         nodeEnd = pTo;
-        nodeStart = currentNode;
-        currentPath= generate(nodeStart, nodeEnd);
+        if (currentNode)
+        {
+            nodeStart = currentNode;
+        }
+        if (nodeStart != null && nodeEnd != null)
+        { 
+            currentPath = generate(nodeStart, nodeEnd);
+            nodeIndex = 0;
+        }
+        else
+        {
+            Debug.Log("node start or node end missing ");
+        }
+
     }
 
 
@@ -62,7 +79,16 @@ public class PathfindingManager : MonoBehaviour
         else
         {
             //recalculate path
+            nodeStart = activeNode;
+            generate(nodeStart, nodeEnd);
         }
+    }
+
+    public void PathCanceled()
+    {
+        currentPath = null;
+
+        state = pathState.idle;
     }
 
     void goThroughQueue()
@@ -76,6 +102,11 @@ public class PathfindingManager : MonoBehaviour
         {
             //path finisehd
             state = pathState.pathEndReached;
+            currentPath = null;
+            Debug.Log("path end reached");
+            // something happen if pathe end here
+            state = pathState.idle;
+       
         }
         Debug.Log("nextNode: " + nextNode.name);
     }
