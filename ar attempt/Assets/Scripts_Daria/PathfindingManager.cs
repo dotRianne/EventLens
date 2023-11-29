@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PathfindingManager : MonoBehaviour
 {
+    //things to test: canceling path, normal path, path recalculation when wrong place reached, path recalculation when end changed, creating a ne wpath
+
     Node[] nodes;
     public Node nodeStart;
     public Node nodeEnd;
@@ -17,23 +19,99 @@ public class PathfindingManager : MonoBehaviour
     void Start()
     {
         nodes = FindObjectsOfType<Node>();
-        generate(nodeStart, nodeEnd);
+        if (nodeStart != null && nodeEnd != null)
+        {
+            generate(nodeStart, nodeEnd);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // after path selected
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            goThroughQueue();
+        }
+
+        if(state == pathState.pathEndReached)
+        {
+            //
+            currentPath = null;
+            state = pathState.idle;
+        }
     }
 
     //button click - > new pTo - > create path - > go trhourgh the path
-    public void newPathRequested(Node pTo) // from ui when 
+    public void newPathRequested(Node pTo) // from ui when loation pressed
     {
         nodeEnd = pTo;
-        nodeStart = currentNode;
-        currentPath= generate(nodeStart, nodeEnd);
-        
-        //queue
+        if (currentNode!= null)
+        {
+            nodeStart = currentNode;
+        }
+        if (nodeStart != null && nodeEnd != null)
+        { 
+            currentPath = generate(nodeStart, nodeEnd);
+            nodeIndex = 0;
+        }
+        else
+        {
+            Debug.Log("nodestart: "+ nodeStart);
+            Debug.Log("nodeEnd: " + nodeEnd);
+
+            Debug.Log("node start or node end missing ");
+        }
+
+    }
+
+
+
+    Node nextNode;
+    int nodeIndex = 0;
+
+    public void nodeReached(Node activeNode) //called in image tracking when a node
+    {
+        currentNode = activeNode;
+        if (activeNode == nextNode)
+        {
+            
+            //go next node
+            goThroughQueue(); 
+        }
+        else
+        {
+            //recalculate path
+            nodeStart = activeNode;
+            generate(nodeStart, nodeEnd);
+        }
+    }
+
+    public void PathCanceled()
+    {
+        currentPath = null;
+
+        state = pathState.idle;
+    }
+
+    void goThroughQueue()
+    {
+        if (nodeIndex < path.Count)
+        {
+            nodeIndex++;
+            nextNode = path[nodeIndex];
+        }
+        else
+        {
+            //path finisehd
+            state = pathState.pathEndReached;
+            currentPath = null;
+            Debug.Log("path end reached");
+            // something happen if pathe end here
+            state = pathState.idle;
+       
+        }
+        Debug.Log("nextNode: " + nextNode.name);
     }
 
     List<Node> visited = new List<Node>();

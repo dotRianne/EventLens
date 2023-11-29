@@ -16,7 +16,7 @@ public class Buttons : MonoBehaviour
     public TMP_Text interactionsText;
     public TMP_Text informationsText;
 
-    private void Start()
+    private void Awake()
     {
         interactionScript = GetComponent<InteractionScript>();
     }
@@ -57,6 +57,7 @@ public class Buttons : MonoBehaviour
 
     public void OpenMap()
     {
+        Debug.Log("Opening map!");
         interactionScript.canSendRaycasts = false;
         ResetEverything();
         map.SetActive(true);
@@ -77,6 +78,7 @@ public class Buttons : MonoBehaviour
     }
     public void CloseInformations()
     {
+        Debug.Log("Closing informations!");
         interactionScript.canSendRaycasts = true;
         ResetEverything();
         HUD.SetActive(true);
@@ -85,16 +87,15 @@ public class Buttons : MonoBehaviour
     public void CloseApplication()
     {
         Application.Quit();
-        Debug.Log("Closing app!");
     }
 
     public void ResetEverything()
     {
+        map.SetActive(false);
+        informations.SetActive(false);
         menu.SetActive(false);
         HUD.SetActive(false);
         exitMenu.SetActive(false);
         interactions.SetActive(false);
-        map.SetActive(false);
-        informations.SetActive(false);
     }    
 }
