@@ -8,8 +8,8 @@ public class PathfindingManager : MonoBehaviour
     //things to test: canceling path, normal path, path recalculation when wrong place reached, path recalculation when end changed, creating a ne wpath
 
     Node[] nodes;
-    public Node nodeStart;
-    public Node nodeEnd;
+    [SerializeField] private Node nodeStart;
+    [SerializeField] private Node nodeEnd;
 
     public Node currentNode;
     private List<Node> currentPath = new List<Node>();
@@ -57,6 +57,7 @@ public class PathfindingManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("currentNode: " + currentNode);
             Debug.Log("nodestart: "+ nodeStart);
             Debug.Log("nodeEnd: " + nodeEnd);
 
