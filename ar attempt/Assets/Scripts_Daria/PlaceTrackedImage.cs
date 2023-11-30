@@ -88,23 +88,25 @@ public class PlaceTrackedImage : MonoBehaviour
                 else
                 {
                     obj.SetActive(false);
+
                 }
             }
         }
     }
 
-/*    void ListAllImages()
-    {
-        Debug.Log(
-            $"There are {m_TrackedImageManager.trackables.count} images being tracked.");
-
-        foreach (var trackedImage in m_TrackedImageManager.trackables)
+    /*    void ListAllImages()
         {
-            Debug.Log($"Image: {trackedImage.referenceImage.name} is at " +
-                      $"{trackedImage.transform.position}");
-        }
-    }*/
+            Debug.Log(
+                $"There are {m_TrackedImageManager.trackables.count} images being tracked.");
 
+            foreach (var trackedImage in m_TrackedImageManager.trackables)
+            {
+                Debug.Log($"Image: {trackedImage.referenceImage.name} is at " +
+                          $"{trackedImage.transform.position}");
+            }
+        }*/
+
+    bool currentlyVisibleNode = false;
     void UpdateImage(ARTrackedImage trackedImage)
     {
         string name = trackedImage.referenceImage.name;
@@ -118,11 +120,13 @@ public class PlaceTrackedImage : MonoBehaviour
         //scan node and send nodereached
         if (name.StartsWith("node"))
         {
+
             //Debug.Log(trackedImage.name.ToString());
             foreach (Node node in nodes) {
                 if(name == node.name)
                 {
                     pathfindingManager.nodeReached(node);
+                    currentlyVisibleNode = true;
                 }
 
 
@@ -130,7 +134,7 @@ public class PlaceTrackedImage : MonoBehaviour
         }
         else
         {
-
+            currentlyVisibleNode = false;
             GameObject prefab = spawnedPrefabs[name];
             prefab.transform.position = pos;
             prefab.SetActive(true);
