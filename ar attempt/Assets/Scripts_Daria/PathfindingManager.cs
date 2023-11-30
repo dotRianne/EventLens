@@ -70,13 +70,11 @@ public class PathfindingManager : MonoBehaviour
     Node nextNode;
     int nodeIndex = 0;
 
-    public void nodeReached(Node activeNode) //called in image tracking when a node
+    public void nodeReached(Node activeNode) //called in image tracking when a node 
+        //cooldown for this
     {
         if (currentNode != activeNode)
         {
-            Debug.Log("ne wnode reached");
-            Debug.Log("currentNode: "+ currentNode);
-            Debug.Log("actovenode: " + activeNode);
 
             currentNode = activeNode;
             if (state == pathState.goingThroughPath)
