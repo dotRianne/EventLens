@@ -85,5 +85,5 @@ MonoBehaviour:
       m_GuidHigh: 16758394151766083082
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: nodeHallway5
+    m_Name: nodeBoard
     m_Texture: {fileID: 2800000, guid: fbcfa035687cdcb40a4600f6b0c691e8, type: 3}

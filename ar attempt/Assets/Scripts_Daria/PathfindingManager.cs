@@ -7,6 +7,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class PathfindingManager : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class PathfindingManager : MonoBehaviour
     Node nodeStart;
     [SerializeField]
     Node nodeEnd;
-
+ 
+    [SerializeField] 
     Node currentNode;
     private List<Node> currentPath = new List<Node>();
     enum pathState {idle, pathEndReached, goingThroughPath };
@@ -32,16 +34,35 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
+    float coolDownNewNode = 5;
+    float timerStart = 0;
+    bool cooldown =false;
     // Update is called once per frame
     void Update()
     {
         // after path selected
-       /* if (Input.GetMouseButtonDown(0))
+        /* if (Input.GetMouseButtonDown(0))
+         {
+             Debug.Log(" press");
+             goThroughQueue();
+         }*/
+        if( cooldown && Time.time - timerStart > coolDownNewNode)
         {
-            Debug.Log(" press");
-            goThroughQueue();
-        }*/
+           // timerStart = Time.time;
+            cooldown = false;
+        }
 
+        if (nodeStart == nodeEnd && state != pathState.pathEndReached)
+        {
+            //path finisehd
+            state = pathState.pathEndReached;
+            currentPath = null;
+            nextNode = null;
+            Debug.Log("path end reached");
+            // something happen if pathe end here
+            state = pathState.idle;
+
+        }
     }
 
     //button click - > new pTo - > create path - > go trhourgh the path
@@ -71,11 +92,11 @@ public class PathfindingManager : MonoBehaviour
     int nodeIndex = 0;
 
     public void nodeReached(Node activeNode) //called in image tracking when a node 
-        //cooldown for this
     {
-        if (currentNode != activeNode)
-        {
-
+       if (currentNode != activeNode && !cooldown)
+       {
+            cooldown = true;
+           timerStart = Time.time;
             currentNode = activeNode;
             if (state == pathState.goingThroughPath)
             {
@@ -109,7 +130,7 @@ public class PathfindingManager : MonoBehaviour
             nodeIndex++;
             nextNode = path[nodeIndex];
         }
-        else
+        if (nodeStart.name == nodeEnd.name)
         {
             //path finisehd
             state = pathState.pathEndReached;
@@ -118,7 +139,7 @@ public class PathfindingManager : MonoBehaviour
             Debug.Log("path end reached");
             // something happen if pathe end here
             state = pathState.idle;
-       
+
         }
         Debug.Log("nextNode: " + nextNode.name);
     }
