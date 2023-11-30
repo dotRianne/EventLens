@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -19,7 +20,7 @@ public class PathfindingManager : MonoBehaviour
 
     Node currentNode;
     private List<Node> currentPath = new List<Node>();
-    enum pathState {idle, pathFound, pathEndReached };
+    enum pathState {idle, pathEndReached, goingThroughPath };
     pathState state = pathState.idle;
 
     void Start()
@@ -46,13 +47,12 @@ public class PathfindingManager : MonoBehaviour
     //button click - > new pTo - > create path - > go trhourgh the path
     public void newPathRequested(Node pTo) // from ui when loation pressed
     {
-        
-        Debug.Log("new nodeEnd: " + pTo);
         nodeEnd = pTo;
 
         if (nodeStart != null && nodeEnd != null)
         { 
             currentPath = generate(nodeStart, nodeEnd);
+            state = pathState.goingThroughPath;
             nodeIndex = 0;
         }
         else
@@ -72,18 +72,28 @@ public class PathfindingManager : MonoBehaviour
 
     public void nodeReached(Node activeNode) //called in image tracking when a node
     {
-        currentNode = activeNode;
-        if (activeNode == nextNode)
+        if (currentNode != activeNode)
         {
-            
-            //go next node
-            goThroughQueue(); 
-        }
-        else
-        {
-            //recalculate path
-            nodeStart = activeNode;
-            generate(nodeStart, nodeEnd);
+            Debug.Log("ne wnode reached");
+            Debug.Log("currentNode: "+ currentNode);
+            Debug.Log("actovenode: " + activeNode);
+
+            currentNode = activeNode;
+            if (state == pathState.goingThroughPath)
+            {
+                if (activeNode == nextNode)
+                {
+
+                    //go next node
+                    goThroughQueue();
+                }
+                else
+                {
+                    //recalculate path
+                    nodeStart = activeNode;
+                    generate(nodeStart, nodeEnd);
+                }
+            }
         }
     }
 
@@ -193,5 +203,10 @@ public class PathfindingManager : MonoBehaviour
     {
         foreach (Node node in list) { Debug.Log("thePath: "+ node + ", "); }
         Debug.Log("/");
+    }
+
+    public List<Node> GetPath()
+    {
+        return currentPath;
     }
 }

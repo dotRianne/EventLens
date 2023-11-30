@@ -118,12 +118,11 @@ public class PlaceTrackedImage : MonoBehaviour
         //scan node and send nodereached
         if (name.StartsWith("node"))
         {
-            Debug.Log("nodefound");
+            //Debug.Log(trackedImage.name.ToString());
             foreach (Node node in nodes) {
-                if(trackedImage.name == node.name)
+                if(name == node.name)
                 {
                     pathfindingManager.nodeReached(node);
-                    Debug.Log("the node found is: "+ node);
                 }
 
 
