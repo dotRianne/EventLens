@@ -64,12 +64,6 @@ public class Node : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public List<Node> GetConnections()
     {
         return connections;
