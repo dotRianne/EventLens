@@ -75,30 +75,11 @@ public class NewPathFinding : MonoBehaviour
     private void findNextNode(Node pFrom, Node pTo)
     {
         List<Node> connectionpFrom = pFrom.GetConnections();
-        /* for (int i = 0; i < pFrom.GetConnections().Count; i++)
-         {
-             if (checkTakenNodes(pFrom.GetConnections()[i]))
-             {
-                 queue.Add(pFrom.GetConnections()[i]);
-                 visited.Add(pFrom);
-                 pFrom.GetConnections()[i].Previous = pFrom;
-
-             }
-
-
-
-         }*/
-        Debug.Log("connections not taken of: " + pFrom);
         for (int i = 0; i < connectionpFrom.Count; i++)
         {
             if (checkTakenNodes(connectionpFrom[i]))
             {
                 queue.Add(connectionpFrom[i]);
-                //visited.Add(pFrom);
-                ///Debug.Log("new visit: "+pFrom);
-              //  connectionpFrom[i].Previous = pFrom;
-                connectionpFrom[i].SetPrevious(pFrom);
-                Debug.Log("con: "+connectionpFrom[i]);
                 if (connectionpFrom[i] == pTo)
                 {
                     pathFound = true;

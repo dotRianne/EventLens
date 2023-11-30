@@ -91,13 +91,10 @@ public class Node : MonoBehaviour
         return Previous;
     }
     public void SetPrevious(Node node)
-    {if (Previous == null)
+    {
+        if (Previous == null)
         {
             Previous = node;
-        }
-        if (showAllPrevious)
-        {
-            Debug.Log("PREV CHANGED ");
         }
     }
 }

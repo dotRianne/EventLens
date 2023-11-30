@@ -6,6 +6,7 @@ using UnityEngine.XR.ARFoundation;
 
 public class PlaceTrackedImage : MonoBehaviour
 {
+    Node[] nodes;
     [SerializeField]
     ARTrackedImageManager m_TrackedImageManager;
     [SerializeField]
@@ -13,13 +14,17 @@ public class PlaceTrackedImage : MonoBehaviour
     [SerializeField]
     GameObject prefabToDestroy;
 
+    PathfindingManager pathfindingManager;
+
     Camera cam;
 
     Dictionary<string, GameObject> spawnedPrefabs = new Dictionary<string, GameObject>();
 
     private void Awake()
     {
+        nodes = FindObjectsOfType<Node>();
         cam = FindObjectOfType<Camera>();
+        pathfindingManager = FindObjectOfType<PathfindingManager>();
        // m_TrackedImageManager = FindObjectOfType<ARTrackedImageManager>();
 
         foreach(GameObject prefab in objectPrefabs)
@@ -109,17 +114,36 @@ public class PlaceTrackedImage : MonoBehaviour
         {
             pos.y += 0.5f;
         }
-        GameObject prefab = spawnedPrefabs[name];
-        prefab.transform.position = pos;
-        prefab.SetActive(true);
+        //check if Node
+        //scan node and send nodereached
+        if (name.StartsWith("node"))
+        {
+            Debug.Log("nodefound");
+            foreach (Node node in nodes) {
+                if(trackedImage.name == node.name)
+                {
+                    pathfindingManager.nodeReached(node);
+                    Debug.Log("the node found is: "+ node);
+                }
 
-        foreach(GameObject obj in spawnedPrefabs.Values)
+
+            }
+        }
+        else
+        {
+
+            GameObject prefab = spawnedPrefabs[name];
+            prefab.transform.position = pos;
+            prefab.SetActive(true);
+        }
+
+       /* foreach(GameObject obj in spawnedPrefabs.Values)
         {
             if (obj.name !=name)
             {
                // obj.SetActive(false);
             }
-        }
+        }*/
 
 
 
