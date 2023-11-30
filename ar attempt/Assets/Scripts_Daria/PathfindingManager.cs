@@ -1,27 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PathfindingManager : MonoBehaviour
 {
-    //things to test: canceling path, normal path, path recalculation when wrong place reached, path recalculation when end changed, creating a ne wpath
+    //things to test: canceling path, path recalculation when wrong place reached, path recalculation when end changed
 
     Node[] nodes;
-    [SerializeField] private Node nodeStart;
-    [SerializeField] private Node nodeEnd;
+    [SerializeField]
+    Node nodeStart;
+    [SerializeField]
+    Node nodeEnd;
 
-    public Node currentNode;
+    Node currentNode;
     private List<Node> currentPath = new List<Node>();
-    enum PathState {idle, pathFound, pathEndReached };
-    PathState state = PathState.idle;
-    // Start is called before the first frame update
+    enum pathState {idle, pathFound, pathEndReached };
+    pathState state = pathState.idle;
+
     void Start()
     {
         nodes = FindObjectsOfType<Node>();
         if (nodeStart != null && nodeEnd != null)
         {
-            Generate(nodeStart, nodeEnd);
+         //  generate(nodeStart, nodeEnd);
         }
     }
 
@@ -29,35 +35,28 @@ public class PathfindingManager : MonoBehaviour
     void Update()
     {
         // after path selected
-        if (Input.GetKeyDown(KeyCode.N))
+       /* if (Input.GetMouseButtonDown(0))
         {
-            GoThroughQueue();
-        }
+            Debug.Log(" press");
+            goThroughQueue();
+        }*/
 
-        if(state == PathState.pathEndReached)
-        {
-            //
-            currentPath = null;
-            state = PathState.idle;
-        }
     }
 
     //button click - > new pTo - > create path - > go trhourgh the path
-    public void NewPathRequested(Node pTo) // from ui when loation pressed
+    public void newPathRequested(Node pTo) // from ui when loation pressed
     {
+        
+        Debug.Log("new nodeEnd: " + pTo);
         nodeEnd = pTo;
-        if (currentNode!= null)
-        {
-            nodeStart = currentNode;
-        }
+
         if (nodeStart != null && nodeEnd != null)
         { 
-            currentPath = Generate(nodeStart, nodeEnd);
+            currentPath = generate(nodeStart, nodeEnd);
             nodeIndex = 0;
         }
         else
         {
-            Debug.Log("currentNode: " + currentNode);
             Debug.Log("nodestart: "+ nodeStart);
             Debug.Log("nodeEnd: " + nodeEnd);
 
@@ -71,20 +70,20 @@ public class PathfindingManager : MonoBehaviour
     Node nextNode;
     int nodeIndex = 0;
 
-    public void NodeReached(Node activeNode) //called in image tracking when a node
+    public void nodeReached(Node activeNode) //called in image tracking when a node
     {
         currentNode = activeNode;
         if (activeNode == nextNode)
         {
             
             //go next node
-            GoThroughQueue(); 
+            goThroughQueue(); 
         }
         else
         {
             //recalculate path
             nodeStart = activeNode;
-            Generate(nodeStart, nodeEnd);
+            generate(nodeStart, nodeEnd);
         }
     }
 
@@ -92,12 +91,12 @@ public class PathfindingManager : MonoBehaviour
     {
         currentPath = null;
 
-        state = PathState.idle;
+        state = pathState.idle;
     }
 
-    void GoThroughQueue()
+    void goThroughQueue()
     {
-        if (nodeIndex < path.Count)
+        if (nodeIndex < path.Count-1)
         {
             nodeIndex++;
             nextNode = path[nodeIndex];
@@ -105,39 +104,39 @@ public class PathfindingManager : MonoBehaviour
         else
         {
             //path finisehd
-            state = PathState.pathEndReached;
+            state = pathState.pathEndReached;
             currentPath = null;
+            nextNode = null;
             Debug.Log("path end reached");
             // something happen if pathe end here
-            state = PathState.idle;
+            state = pathState.idle;
        
         }
         Debug.Log("nextNode: " + nextNode.name);
     }
-
+ 
     List<Node> visited = new List<Node>();
     List<Node> queue = new List<Node>();
     List<Node> path = new List<Node>();
 
 
 
-     List<Node> Generate(Node pFrom, Node pTo)
+     List<Node> generate(Node pFrom, Node pTo)
     {
         visited = new List<Node>();
         queue = new List<Node>();
         path = new List<Node>();
 
-        FindPath(pFrom, pTo);
+        findPath(pFrom, pTo);
         path.Reverse();
-        PrintList(path);
+        printList(path);
         return path;
 
     }
 
-    private void FindPath(Node pFrom, Node pTo)
+    private void findPath(Node pFrom, Node pTo)
     {
         queue.Add(pFrom);
-       // Console.WriteLine("q add: " + pFrom);
         visited.Add(pFrom);
 
         for (int i = 0; i < queue.Count; i++)
@@ -145,39 +144,39 @@ public class PathfindingManager : MonoBehaviour
             if (queue[i] == pTo)
                 break;
 
-            FindNextNode(queue[i], pTo);
+            findNextNode(queue[i], pTo);
 
         }
         // Reconstruct the path
 
-        Node currentNode = pTo;
-        while (currentNode != pFrom)
+        Node currentNodePathFinding = pTo;
+        while (currentNodePathFinding != pFrom)
         {
-            path.Add(currentNode);
-            currentNode = currentNode.Previous;
+            path.Add(currentNodePathFinding);
+            currentNodePathFinding = currentNodePathFinding.GetPrevious();
 
         }
         path.Add(pFrom);
 
     }
-    private void FindNextNode(Node pFrom, Node pTo)
+    private void findNextNode(Node pFrom, Node pTo)
     {
         for (int i = 0; i < pFrom.GetConnections().Count; i++)
         {
-                if (CheckTakenNodes(pFrom.GetConnections()[i]))
-                {
+               // if (checkTakenNodes(pFrom.GetConnections()[i]))
+               // {
                     queue.Add(pFrom.GetConnections()[i]);
                     visited.Add(pFrom);
-                    pFrom.GetConnections()[i].Previous = pFrom;
+                    pFrom.GetConnections()[i].SetPrevious(pFrom);
 
-                }
+               // }
 
 
 
         }
     }
 
-    private bool CheckTakenNodes(Node nodeToCheck)
+  /*  private bool checkTakenNodes(Node nodeToCheck)
     {
         for (int i = 0; i < visited.Count; i++)
         {
@@ -187,12 +186,12 @@ public class PathfindingManager : MonoBehaviour
             }
         }
         return true;
-    }
+    }*/
 
 
-    private void PrintList(List<Node> list)
+    private void printList(List<Node> list)
     {
-        foreach (Node node in list) { Debug.Log(node + ", "); }
+        foreach (Node node in list) { Debug.Log("thePath: "+ node + ", "); }
         Debug.Log("/");
     }
 }
