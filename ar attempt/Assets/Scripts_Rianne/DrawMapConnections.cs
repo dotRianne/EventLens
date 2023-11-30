@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -17,7 +18,7 @@ public class DrawMapConnections : MonoBehaviour
     public Button[] imgList;
     public List<Node> connections;
 
-    private float lineWidth = 20f;
+    private float lineWidth = 10f;
 
     private void Awake()
     {
@@ -28,27 +29,29 @@ public class DrawMapConnections : MonoBehaviour
     {
         for (int i = 0; i < nodeList.Length; i++)
         {
-            ConnectedNodes(nodeList[i]);
+            ConnectedNodes(nodeList[i], imgList[i]);
         }
     }
 
 
-    public void ConnectedNodes(Node node)
+    public void ConnectedNodes(Node node, Button img)
     {
-        connections = node.GetConnections();
-
         nodeA = node;
-        for(int i = 0; i < node.GetConnections().Count; i++)
-        {
-            imgA = imgList[i].GetComponent<Image>();
+        imgA = img.GetComponent<Image>();
+        connections = nodeA.GetConnections();
+        //Debug.Log(nodeA.name + ": " + connections.Count);
 
-            for(int j = 0; j < imgList.Length;j++)
+        for(int i = 0; i < nodeA.GetConnections().Count; i++)
+        {
+            nodeB = connections[i];
+
+            for (int j = 0; j < imgList.Length; j++)
             {
                 imgB = imgList[j].GetComponent<Image>();
-                nodeB = connections[i];
 
-                if (connections.Contains(nodeB) && imgB.name == nodeB.name)
+                if (connections.Contains(nodeB) && imgB.gameObject.name == nodeB.gameObject.name)
                 {
+                    //Debug.Log(imgA.gameObject.name + " -> " + imgB.gameObject.name);
                     DrawConnection(imagePrefab, imgA, imgB);
                 }
             }
