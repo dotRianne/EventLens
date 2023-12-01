@@ -12,6 +12,7 @@ using UnityEngine.UIElements;
 public class PathfindingManager : MonoBehaviour
 {
     //things to test: canceling path, path recalculation when wrong place reached, path recalculation when end changed
+    public DrawMapConnections mapConnections;
 
     Node[] nodes;
     [SerializeField]
@@ -30,7 +31,7 @@ public class PathfindingManager : MonoBehaviour
         nodes = FindObjectsOfType<Node>();
         if (nodeStart != null && nodeEnd != null)
         {
-            generate(nodeStart, nodeEnd);
+            //generate(nodeStart, nodeEnd);
         }
     }
 
@@ -75,6 +76,7 @@ public class PathfindingManager : MonoBehaviour
             currentPath = generate(nodeStart, nodeEnd);
             state = pathState.goingThroughPath;
             nodeIndex = 0;
+            mapConnections.AllNodes();
         }
         else
         {

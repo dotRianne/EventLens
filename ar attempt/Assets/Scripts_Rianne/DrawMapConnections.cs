@@ -23,11 +23,6 @@ public class DrawMapConnections : MonoBehaviour
     private float lineWidth = 10f;
     PathfindingManager pathfindingManager;
 
-    private void Awake()
-    {
-        AllNodes();
-    }
-
     public void AllNodes()
     {
         for (int i = 0; i < nodeList.Length; i++)
