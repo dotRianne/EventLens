@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,7 +52,7 @@ public class DrawMapConnections : MonoBehaviour
             for (int j = 0; j < imgList.Length; j++)
             {
                 imgB = imgList[j].GetComponent<Image>();
-
+                Debug.Log("nodeA in path: " + path.Contains(nodeA) + ", nodeB in path: " + path.Contains(nodeB));
                 if (connections.Contains(nodeB) && imgB.gameObject.name == nodeB.gameObject.name && path.Contains(nodeA) && path.Contains(nodeB))
                 {
                     //Debug.Log(imgA.gameObject.name + " -> " + imgB.gameObject.name);

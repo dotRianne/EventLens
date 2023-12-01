@@ -28,7 +28,7 @@ public class PathfindingManager : MonoBehaviour
         nodes = FindObjectsOfType<Node>();
         if (nodeStart != null && nodeEnd != null)
         {
-         //  generate(nodeStart, nodeEnd);
+            generate(nodeStart, nodeEnd);
         }
     }
 
@@ -44,8 +44,8 @@ public class PathfindingManager : MonoBehaviour
 
     }
 
-    //button click - > new pTo - > create path - > go trhourgh the path
-    public void newPathRequested(Node pTo) // from ui when loation pressed
+    //button click - > new pTo - > create path - > go throurgh the path
+    public void newPathRequested(Node pTo) // from ui when location is pressed
     {
         nodeEnd = pTo;
 
