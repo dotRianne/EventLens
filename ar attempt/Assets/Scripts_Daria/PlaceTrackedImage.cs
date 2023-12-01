@@ -126,7 +126,7 @@ public class PlaceTrackedImage : MonoBehaviour
                 if(name == node.name)
                 {
                     pathfindingManager.nodeReached(node);
-                    currentlyVisibleNode = true;
+                   // currentlyVisibleNode = true;
                 }
 
 
@@ -134,7 +134,7 @@ public class PlaceTrackedImage : MonoBehaviour
         }
         else
         {
-            currentlyVisibleNode = false;
+          //  currentlyVisibleNode = false;
             GameObject prefab = spawnedPrefabs[name];
             prefab.transform.position = pos;
             prefab.SetActive(true);
