@@ -12,8 +12,11 @@ using UnityEngine.UIElements;
 public class PathfindingManager : MonoBehaviour
 {
     //things to test: canceling path, path recalculation when wrong place reached, path recalculation when end changed
+<<<<<<< Updated upstream
     public DrawMapConnections mapConnections;
 
+=======
+>>>>>>> Stashed changes
     Node[] nodes;
     [SerializeField]
     Node nodeStart;
@@ -22,6 +25,9 @@ public class PathfindingManager : MonoBehaviour
  
     [SerializeField] 
     Node currentNode;
+
+    [SerializeField]
+    GameObject digitalPlayer;
     private List<Node> currentPath = new List<Node>();
     enum pathState {idle, pathEndReached, goingThroughPath };
     pathState state = pathState.idle;
@@ -35,25 +41,32 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
-    float coolDownNewNode = 5;
+    float coolDownNewNode = 3;
     float timerStart = 0;
-    bool cooldown =false;
+    bool cooldown = false;
+    bool doOnce = false;
     // Update is called once per frame
     void Update()
     {
+        if (state == pathState.goingThroughPath && currentPath.Count-1>nodeIndex)
+        {
+            Debug.Log(currentPath[nodeIndex+1]);
+            digitalPlayer.transform.LookAt(currentPath[nodeIndex+1].gameObject.transform.position);
+           // digitalPlayer.transform.LookAt(guideLookAt.gameObject.transform.position);
+        }
         // after path selected
         /* if (Input.GetMouseButtonDown(0))
          {
              Debug.Log(" press");
              goThroughQueue();
          }*/
-        if( cooldown && Time.time - timerStart > coolDownNewNode)
+        if ( cooldown && Time.time - timerStart > coolDownNewNode)
         {
            // timerStart = Time.time;
             cooldown = false;
         }
 
-        if (nodeStart == nodeEnd && state != pathState.pathEndReached)
+        if (nodeStart == nodeEnd && !doOnce)
         {
             //path finisehd
             state = pathState.pathEndReached;
@@ -62,6 +75,7 @@ public class PathfindingManager : MonoBehaviour
             Debug.Log("path end reached");
             // something happen if pathe end here
             state = pathState.idle;
+            doOnce = true;
 
         }
     }
@@ -69,7 +83,9 @@ public class PathfindingManager : MonoBehaviour
     //button click - > new pTo - > create path - > go throurgh the path
     public void newPathRequested(Node pTo) // from ui when location is pressed
     {
+        nodeStart = currentNode;
         nodeEnd = pTo;
+        
 
         if (nodeStart != null && nodeEnd != null)
         { 
@@ -97,9 +113,11 @@ public class PathfindingManager : MonoBehaviour
     {
        if (currentNode != activeNode && !cooldown)
        {
+            doOnce = false;
             cooldown = true;
-           timerStart = Time.time;
+            timerStart = Time.time;
             currentNode = activeNode;
+            digitalPlayer.transform.position = currentNode.transform.position;
             if (state == pathState.goingThroughPath)
             {
                 if (activeNode == nextNode)
@@ -112,7 +130,7 @@ public class PathfindingManager : MonoBehaviour
                 {
                     //recalculate path
                     nodeStart = activeNode;
-                    generate(nodeStart, nodeEnd);
+                   currentPath= generate(nodeStart, nodeEnd);
                 }
             }
         }
@@ -131,6 +149,8 @@ public class PathfindingManager : MonoBehaviour
         {
             nodeIndex++;
             nextNode = path[nodeIndex];
+            Debug.Log("index+");
+            //digitalPlayer.transform.LookAt(nextNode.transform.position);
         }
         if (nodeStart.name == nodeEnd.name)
         {
@@ -207,7 +227,7 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
-  /*  private bool checkTakenNodes(Node nodeToCheck)
+    private bool checkTakenNodes(Node nodeToCheck)
     {
         for (int i = 0; i < visited.Count; i++)
         {
@@ -217,7 +237,7 @@ public class PathfindingManager : MonoBehaviour
             }
         }
         return true;
-    }*/
+    }
 
 
     private void printList(List<Node> list)
