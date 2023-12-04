@@ -12,11 +12,9 @@ using UnityEngine.UIElements;
 public class PathfindingManager : MonoBehaviour
 {
     //things to test: canceling path, path recalculation when wrong place reached, path recalculation when end changed
-<<<<<<< Updated upstream
+
     public DrawMapConnections mapConnections;
 
-=======
->>>>>>> Stashed changes
     Node[] nodes;
     [SerializeField]
     Node nodeStart;
@@ -149,7 +147,6 @@ public class PathfindingManager : MonoBehaviour
         {
             nodeIndex++;
             nextNode = path[nodeIndex];
-            Debug.Log("index+");
             //digitalPlayer.transform.LookAt(nextNode.transform.position);
         }
         if (nodeStart.name == nodeEnd.name)
