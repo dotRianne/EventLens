@@ -11,8 +11,11 @@ public class PlaceTrackedImage : MonoBehaviour
     ARTrackedImageManager m_TrackedImageManager;
     [SerializeField]
     GameObject[] objectPrefabs;
+    bool mapRotationSet = false;
+
+
     [SerializeField]
-    GameObject prefabToDestroy;
+    Node nodeStart;
 
     PathfindingManager pathfindingManager;
 
@@ -71,7 +74,7 @@ public class PlaceTrackedImage : MonoBehaviour
         // Debug.Log(m_TrackedImageManager.referenceLibrary.count);
         if (m_TrackedImageManager.referenceLibrary.count > 0)
         {
-            Destroy(prefabToDestroy);
+          //  Destroy(prefabToDestroy);
         }
 
 
@@ -120,16 +123,32 @@ public class PlaceTrackedImage : MonoBehaviour
         //scan node and send nodereached
         if (name.StartsWith("node"))
         {
-
-            //Debug.Log(trackedImage.name.ToString());
-            foreach (Node node in nodes) {
-                if(name == node.name)
+            if (!mapRotationSet)
+            {
+                if (name == nodeStart.name && cam && pathfindingManager)
                 {
-                    pathfindingManager.nodeReached(node);
-                   // currentlyVisibleNode = true;
+                    Debug.Log("map rotation set");
+                    Vector3 camRotation = cam.transform.eulerAngles;
+                    camRotation.x = 0;
+                    camRotation.z = 0;
+                    camRotation.y -= 90;
+                    pathfindingManager.transform.eulerAngles = camRotation;  
+                    mapRotationSet = true;
                 }
+            }
+            else
+            {
+                //Debug.Log(trackedImage.name.ToString());
+                foreach (Node node in nodes)
+                {
+                    if (name == node.name)
+                    {
+                        pathfindingManager.nodeReached(node);
+                        // currentlyVisibleNode = true;
+                    }
 
 
+                }
             }
         }
         else
