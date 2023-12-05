@@ -216,7 +216,7 @@ MonoBehaviour:
   objectPrefabs:
   - {fileID: 6551994089809967277, guid: 7f0ed06f56987d645b8ffe75ed3cf987, type: 3}
   - {fileID: 6972679625016692275, guid: 1dead7874e789eb49bfd4b94c19b9199, type: 3}
-  prefabToDestroy: {fileID: 0}
+  nodeStart: {fileID: 771721674}
 --- !u!4 &598401538
 Transform:
   m_ObjectHideFlags: 0
