@@ -1,12 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem.EnhancedTouch;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
 using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
-using TMPro;
-using Unity.VisualScripting.Dependencies.NCalc;
 
 public class InteractionScript : MonoBehaviour
 { 

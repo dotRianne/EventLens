@@ -1,12 +1,6 @@
-using JetBrains.Annotations;
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.FilePathAttribute;
 
 public class DrawMapConnections : MonoBehaviour
 {
@@ -32,15 +26,20 @@ public class DrawMapConnections : MonoBehaviour
 
     public void AllNodes()
     {
-        Debug.Log("connectionImages length " + connectionImages.Count);
-        for(int i = 0; i < connectionImages.Count; i++)
-        {
-            Destroy(connectionImages[i]);
-        }
+        DestroyConnections();
         Debug.Log("DMC: Running AllNodes();");
         for (int i = 0; i < nodeList.Length; i++)
         {
             ConnectedNodes(nodeList[i], imgList[i]);
+        }
+    }
+
+    public void DestroyConnections()
+    {
+        Debug.Log("connectionImages length " + connectionImages.Count);
+        for (int i = 0; i < connectionImages.Count; i++)
+        {
+            Destroy(connectionImages[i]);
         }
     }
 

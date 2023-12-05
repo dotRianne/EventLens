@@ -1,7 +1,5 @@
 
-using UnityEngine.SceneManagement;
 using UnityEngine;
-using Unity.VisualScripting;
 using TMPro;
 
 public class Buttons : MonoBehaviour
