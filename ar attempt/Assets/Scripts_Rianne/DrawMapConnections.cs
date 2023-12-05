@@ -11,10 +11,10 @@ public class DrawMapConnections : MonoBehaviour
 {
     [SerializeField] private Transform connectionParent;
     [SerializeField] private Image imagePrefab;
-    [SerializeField] private Image imgA;
-    [SerializeField] private Image imgB;
-    [SerializeField] private Node nodeA;
-    [SerializeField] private Node nodeB;
+    private Image imgA;
+    private Image imgB;
+    private Node nodeA;
+    private Node nodeB;
     public Node[] nodeList;
     public Button[] imgList;
     public List<Node> connections;
