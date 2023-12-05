@@ -46,6 +46,7 @@ public class PathfindingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Debug.Log("nodeStart is: " + nodeStart);
         if (state == pathState.goingThroughPath && currentPath.Count-1>nodeIndex)
         {
            // Debug.Log(currentPath[nodeIndex+1]);
@@ -81,16 +82,19 @@ public class PathfindingManager : MonoBehaviour
     //button click - > new pTo - > create path - > go throurgh the path
     public void newPathRequested(Node pTo) // from ui when location is pressed
     {
-        nodeStart = currentNode;
+       // nodeStart = currentNode;
         nodeEnd = pTo;
         
 
         if (nodeStart != null && nodeEnd != null)
-        { 
+        {
+            Debug.Log("GENERATING PATH WITH STARTNODE: " + nodeStart);
+           // Debug.Log(nodeEnd);
+
             currentPath = generate(nodeStart, nodeEnd);
             state = pathState.goingThroughPath;
             nodeIndex = 0;
-            mapConnections.AllNodes();
+          //  mapConnections.AllNodes();
         }
         else
         {

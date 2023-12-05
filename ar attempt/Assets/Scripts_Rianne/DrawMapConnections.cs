@@ -23,6 +23,11 @@ public class DrawMapConnections : MonoBehaviour
     private float lineWidth = 10f;
     PathfindingManager pathfindingManager;
 
+    public void Awake()
+    {
+        AllNodes();
+    }
+
     public void AllNodes()
     {
         for (int i = 0; i < nodeList.Length; i++)
@@ -35,6 +40,7 @@ public class DrawMapConnections : MonoBehaviour
     public void ConnectedNodes(Node node, Button img)
     {
         path = pathfindingManager.GetPath();        // NULL REFERENCE ERROR?
+        if(path == null) return;
         nodeA = node;
         imgA = img.GetComponent<Image>();
         connections = nodeA.GetConnections();
@@ -48,7 +54,7 @@ public class DrawMapConnections : MonoBehaviour
             {
                 imgB = imgList[j].GetComponent<Image>();
                 Debug.Log("nodeA in path: " + path.Contains(nodeA) + ", nodeB in path: " + path.Contains(nodeB));
-                if (connections.Contains(nodeB) && imgB.gameObject.name == nodeB.gameObject.name && path.Contains(nodeA) && path.Contains(nodeB))
+                if (connections.Contains(nodeB) && imgB.gameObject.name == nodeB.gameObject.name /*&& path.Contains(nodeA) && path.Contains(nodeB)*/)
                 {
                     //Debug.Log(imgA.gameObject.name + " -> " + imgB.gameObject.name);
                     DrawConnection(imagePrefab, imgA, imgB);
