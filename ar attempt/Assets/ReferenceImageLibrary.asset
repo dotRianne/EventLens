@@ -51,22 +51,22 @@ MonoBehaviour:
       m_GuidLow: 5640581211586043103
       m_GuidHigh: 17308530148197098884
     m_SerializedTextureGuid:
-      m_GuidLow: 13403894629500490488
-      m_GuidHigh: 10152040611492624297
+      m_GuidLow: 1059476089802738663
+      m_GuidHigh: 5203826375079093817
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: nodeExit
-    m_Texture: {fileID: 2800000, guid: 0e2492f83326ba04a9775bf9254be38c, type: 3}
+    m_Texture: {fileID: 2800000, guid: ecb64be703e30eb439e6655f84b43748, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5304149917920432139
       m_GuidHigh: 6267107036437959068
     m_SerializedTextureGuid:
-      m_GuidLow: 10850444518042633846
-      m_GuidHigh: 4807318772582592827
+      m_GuidLow: 7504125181880162132
+      m_GuidHigh: 1607924204783986187
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: nodeHallway1
-    m_Texture: {fileID: 2800000, guid: 1104067685cd96943b31da11f406b742, type: 3}
+    m_Name: nodeHallway5
+    m_Texture: {fileID: 2800000, guid: 2807d754021868240be6e68b8b7e5016, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5045238098674586550
       m_GuidHigh: 6900071050038728588

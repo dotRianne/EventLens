@@ -48,7 +48,7 @@ public class PathfindingManager : MonoBehaviour
     {
         if (state == pathState.goingThroughPath && currentPath.Count-1>nodeIndex)
         {
-            Debug.Log(currentPath[nodeIndex+1]);
+           // Debug.Log(currentPath[nodeIndex+1]);
             digitalPlayer.transform.LookAt(currentPath[nodeIndex+1].gameObject.transform.position);
            // digitalPlayer.transform.LookAt(guideLookAt.gameObject.transform.position);
         }
@@ -131,6 +131,7 @@ public class PathfindingManager : MonoBehaviour
                    currentPath= generate(nodeStart, nodeEnd);
                 }
             }
+
         }
     }
 
@@ -174,14 +175,57 @@ public class PathfindingManager : MonoBehaviour
         visited = new List<Node>();
         queue = new List<Node>();
         path = new List<Node>();
+        bool found = false;
+        queue.Add(pFrom);
+        while (queue.Count>0)
+        {
+            Node current = queue[0];
+            queue.RemoveAt(0);
+            Debug.Log("BFS: considering node " + current.name+" visited: "+visited.Count+" queue: "+queue.Count);
+            visited.Add(current);
+            if (current==pTo)
+            {
+                Debug.Log("Done");
+                found = true;
+                break;
+            }
+            foreach (Node nb in current.GetConnections())
+            {
+                if (!visited.Contains(nb) && !queue.Contains(nb))
+                {
+                    queue.Add(nb);
+                    nb.SetPrevious(current); 
+                }
+            }
+        }
+        if (found)
+        {
+            List<Node> path=new List<Node>();
+            Node curr = pTo;
+            path.Add(curr);
+            Debug.Log("Creating path");
+            while (curr!=pFrom)
+            {
+                curr=curr.GetPrevious();
+                path.Add(curr);
+            }
+            Debug.Log("Path creation done");
+            path.Reverse();
+            printList(path);
+            return path;
 
-        findPath(pFrom, pTo);
-        path.Reverse();
-        printList(path);
-        return path;
+        }
+        Debug.Log("No path found. Disconnected map?");
+        return null;
+
+
+       // findPath(pFrom, pTo);
+       // path.Reverse();
+      // printList(path);
+       // return path;
 
     }
-
+    /*
     private void findPath(Node pFrom, Node pTo)
     {
         queue.Add(pFrom);
@@ -213,8 +257,8 @@ public class PathfindingManager : MonoBehaviour
         {
                // if (checkTakenNodes(pFrom.GetConnections()[i]))
                // {
-                    queue.Add(pFrom.GetConnections()[i]);
-                    visited.Add(pFrom);
+                    queue.Add(pFrom.GetConnections()[i]); // check if it's already in there!
+                    visited.Add(pFrom); // dont do this in for loop
                     pFrom.GetConnections()[i].SetPrevious(pFrom);
 
                // }
@@ -235,7 +279,7 @@ public class PathfindingManager : MonoBehaviour
         }
         return true;
     }
-
+    */
 
     private void printList(List<Node> list)
     {
