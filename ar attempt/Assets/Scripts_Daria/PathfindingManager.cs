@@ -12,6 +12,7 @@ using UnityEngine.UIElements;
 public class PathfindingManager : MonoBehaviour
 {
     //things to test: canceling path, path recalculation when wrong place reached, path recalculation when end changed
+
     public DrawMapConnections mapConnections;
 
     Node[] nodes;
@@ -22,6 +23,9 @@ public class PathfindingManager : MonoBehaviour
  
     [SerializeField] 
     Node currentNode;
+
+    [SerializeField]
+    GameObject digitalPlayer;
     private List<Node> currentPath = new List<Node>();
     enum pathState {idle, pathEndReached, goingThroughPath };
     pathState state = pathState.idle;
@@ -35,25 +39,32 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
-    float coolDownNewNode = 5;
+    float coolDownNewNode = 3;
     float timerStart = 0;
-    bool cooldown =false;
+    bool cooldown = false;
+    bool doOnce = false;
     // Update is called once per frame
     void Update()
     {
+        if (state == pathState.goingThroughPath && currentPath.Count-1>nodeIndex)
+        {
+           // Debug.Log(currentPath[nodeIndex+1]);
+            digitalPlayer.transform.LookAt(currentPath[nodeIndex+1].gameObject.transform.position);
+           // digitalPlayer.transform.LookAt(guideLookAt.gameObject.transform.position);
+        }
         // after path selected
         /* if (Input.GetMouseButtonDown(0))
          {
              Debug.Log(" press");
              goThroughQueue();
          }*/
-        if( cooldown && Time.time - timerStart > coolDownNewNode)
+        if ( cooldown && Time.time - timerStart > coolDownNewNode)
         {
            // timerStart = Time.time;
             cooldown = false;
         }
 
-        if (nodeStart == nodeEnd && state != pathState.pathEndReached)
+        if (nodeStart == nodeEnd && !doOnce)
         {
             //path finisehd
             state = pathState.pathEndReached;
@@ -62,6 +73,7 @@ public class PathfindingManager : MonoBehaviour
             Debug.Log("path end reached");
             // something happen if pathe end here
             state = pathState.idle;
+            doOnce = true;
 
         }
     }
@@ -69,7 +81,9 @@ public class PathfindingManager : MonoBehaviour
     //button click - > new pTo - > create path - > go throurgh the path
     public void newPathRequested(Node pTo) // from ui when location is pressed
     {
+        nodeStart = currentNode;
         nodeEnd = pTo;
+        
 
         if (nodeStart != null && nodeEnd != null)
         { 
@@ -97,9 +111,11 @@ public class PathfindingManager : MonoBehaviour
     {
        if (currentNode != activeNode && !cooldown)
        {
+            doOnce = false;
             cooldown = true;
-           timerStart = Time.time;
+            timerStart = Time.time;
             currentNode = activeNode;
+            digitalPlayer.transform.position = currentNode.transform.position;
             if (state == pathState.goingThroughPath)
             {
                 if (activeNode == nextNode)
@@ -112,9 +128,10 @@ public class PathfindingManager : MonoBehaviour
                 {
                     //recalculate path
                     nodeStart = activeNode;
-                    generate(nodeStart, nodeEnd);
+                   currentPath= generate(nodeStart, nodeEnd);
                 }
             }
+
         }
     }
 
@@ -131,6 +148,7 @@ public class PathfindingManager : MonoBehaviour
         {
             nodeIndex++;
             nextNode = path[nodeIndex];
+            //digitalPlayer.transform.LookAt(nextNode.transform.position);
         }
         if (nodeStart.name == nodeEnd.name)
         {
@@ -157,14 +175,57 @@ public class PathfindingManager : MonoBehaviour
         visited = new List<Node>();
         queue = new List<Node>();
         path = new List<Node>();
+        bool found = false;
+        queue.Add(pFrom);
+        while (queue.Count>0)
+        {
+            Node current = queue[0];
+            queue.RemoveAt(0);
+            Debug.Log("BFS: considering node " + current.name+" visited: "+visited.Count+" queue: "+queue.Count);
+            visited.Add(current);
+            if (current==pTo)
+            {
+                Debug.Log("Done");
+                found = true;
+                break;
+            }
+            foreach (Node nb in current.GetConnections())
+            {
+                if (!visited.Contains(nb) && !queue.Contains(nb))
+                {
+                    queue.Add(nb);
+                    nb.SetPrevious(current); 
+                }
+            }
+        }
+        if (found)
+        {
+            List<Node> path=new List<Node>();
+            Node curr = pTo;
+            path.Add(curr);
+            Debug.Log("Creating path");
+            while (curr!=pFrom)
+            {
+                curr=curr.GetPrevious();
+                path.Add(curr);
+            }
+            Debug.Log("Path creation done");
+            path.Reverse();
+            printList(path);
+            return path;
 
-        findPath(pFrom, pTo);
-        path.Reverse();
-        printList(path);
-        return path;
+        }
+        Debug.Log("No path found. Disconnected map?");
+        return null;
+
+
+       // findPath(pFrom, pTo);
+       // path.Reverse();
+      // printList(path);
+       // return path;
 
     }
-
+    /*
     private void findPath(Node pFrom, Node pTo)
     {
         queue.Add(pFrom);
@@ -196,8 +257,8 @@ public class PathfindingManager : MonoBehaviour
         {
                // if (checkTakenNodes(pFrom.GetConnections()[i]))
                // {
-                    queue.Add(pFrom.GetConnections()[i]);
-                    visited.Add(pFrom);
+                    queue.Add(pFrom.GetConnections()[i]); // check if it's already in there!
+                    visited.Add(pFrom); // dont do this in for loop
                     pFrom.GetConnections()[i].SetPrevious(pFrom);
 
                // }
@@ -207,7 +268,7 @@ public class PathfindingManager : MonoBehaviour
         }
     }
 
-  /*  private bool checkTakenNodes(Node nodeToCheck)
+    private bool checkTakenNodes(Node nodeToCheck)
     {
         for (int i = 0; i < visited.Count; i++)
         {
@@ -217,8 +278,8 @@ public class PathfindingManager : MonoBehaviour
             }
         }
         return true;
-    }*/
-
+    }
+    */
 
     private void printList(List<Node> list)
     {
