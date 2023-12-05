@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.FilePathAttribute;
@@ -19,17 +20,24 @@ public class DrawMapConnections : MonoBehaviour
     public Button[] imgList;
     public List<Node> connections;
     public List<Node> path;
+    public List<Image> connectionImages;
 
-    private float lineWidth = 10f;
+    [SerializeField] private float lineWidth = 20f;
     PathfindingManager pathfindingManager;
 
     public void Awake()
     {
-        AllNodes();
+     pathfindingManager = FindObjectOfType<PathfindingManager>();
     }
 
     public void AllNodes()
     {
+        Debug.Log("connectionImages length " + connectionImages.Count);
+        for(int i = 0; i < connectionImages.Count; i++)
+        {
+            Destroy(connectionImages[i]);
+        }
+        Debug.Log("DMC: Running AllNodes();");
         for (int i = 0; i < nodeList.Length; i++)
         {
             ConnectedNodes(nodeList[i], imgList[i]);
@@ -39,12 +47,11 @@ public class DrawMapConnections : MonoBehaviour
 
     public void ConnectedNodes(Node node, Button img)
     {
-        path = pathfindingManager.GetPath();        // NULL REFERENCE ERROR?
-        if(path == null) return;
+        path = pathfindingManager.GetPath();
+        Debug.Log(path.Count);
         nodeA = node;
         imgA = img.GetComponent<Image>();
         connections = nodeA.GetConnections();
-        //Debug.Log(nodeA.name + ": " + connections.Count);
 
         for (int i = 0; i < nodeA.GetConnections().Count; i++)
         {
@@ -53,10 +60,9 @@ public class DrawMapConnections : MonoBehaviour
             for (int j = 0; j < imgList.Length; j++)
             {
                 imgB = imgList[j].GetComponent<Image>();
-                Debug.Log("nodeA in path: " + path.Contains(nodeA) + ", nodeB in path: " + path.Contains(nodeB));
-                if (connections.Contains(nodeB) && imgB.gameObject.name == nodeB.gameObject.name /*&& path.Contains(nodeA) && path.Contains(nodeB)*/)
+
+                if (connections.Contains(nodeB) && imgB.gameObject.name == nodeB.gameObject.name && path.Contains(nodeA) && path.Contains(nodeB))
                 {
-                    //Debug.Log(imgA.gameObject.name + " -> " + imgB.gameObject.name);
                     DrawConnection(imagePrefab, imgA, imgB);
                 }
             }
@@ -82,7 +88,8 @@ public class DrawMapConnections : MonoBehaviour
         image_Prefab.rectTransform.sizeDelta = new Vector2(lineWidth, distance);
 
         //Instantiate image with position from node_A, distance from nodeA to nodeB, rotation towards nodeB
-        Instantiate(image_Prefab, posA, targetRotation, connectionParent);
+        Image connectionInstance = Instantiate(image_Prefab, posA, targetRotation, connectionParent);
+        connectionImages.Add(connectionInstance);
 
     }
 }

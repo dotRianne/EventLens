@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16912735, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.16912735, g: 1, b: 0, a: 0.3254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16912735, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.16912735, g: 1, b: 0, a: 0.3254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3017,7 +3017,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16912735, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.16912735, g: 1, b: 0, a: 0.3254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3818,7 +3818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16912735, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.16912735, g: 1, b: 0, a: 0.3254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3905,7 +3905,7 @@ GameObject:
   - component: {fileID: 3711800788438309545}
   - component: {fileID: 3712401790593531382}
   m_Layer: 5
-  m_Name: nodeBoardgames
+  m_Name: nodeBoard
   m_TagString: mapNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6008,7 +6008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16912735, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.16912735, g: 1, b: 0, a: 0.3254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6262,7 +6262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.16912735, g: 1, b: 0, a: 1}
+  m_Color: {r: 0.16912735, g: 1, b: 0, a: 0.3254902}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7673,7 +7673,7 @@ GameObject:
   - component: {fileID: 8237323607384866836}
   - component: {fileID: 226679690595740372}
   m_Layer: 5
-  m_Name: nodePointandclick
+  m_Name: nodePointclick
   m_TagString: mapNode
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

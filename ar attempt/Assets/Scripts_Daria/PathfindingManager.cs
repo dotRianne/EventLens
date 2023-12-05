@@ -94,7 +94,7 @@ public class PathfindingManager : MonoBehaviour
             currentPath = generate(nodeStart, nodeEnd);
             state = pathState.goingThroughPath;
             nodeIndex = 0;
-          //  mapConnections.AllNodes();
+            mapConnections.AllNodes();
         }
         else
         {
@@ -293,6 +293,7 @@ public class PathfindingManager : MonoBehaviour
 
     public List<Node> GetPath()
     {
+        Debug.Log("GETPATH: " + currentPath.Count);
         return currentPath;
     }
 }
