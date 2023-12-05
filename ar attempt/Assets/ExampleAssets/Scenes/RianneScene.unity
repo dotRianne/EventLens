@@ -264,7 +264,12 @@ PrefabInstance:
         type: 3}
       propertyPath: nodeStart
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 771721674}
+    - target: {fileID: 2097165563914384107, guid: 03d631efbad514140b9f8602a821ea26,
+        type: 3}
+      propertyPath: currentNode
+      value: 
+      objectReference: {fileID: 771721674}
     - target: {fileID: 2097165563914384107, guid: 03d631efbad514140b9f8602a821ea26,
         type: 3}
       propertyPath: mapConnections
@@ -2367,6 +2372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4212083960887514, guid: 2f28a12e81a274d1ca7af6819004b613, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114977314496926096, guid: 2f28a12e81a274d1ca7af6819004b613,
+        type: 3}
+      propertyPath: skin
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
