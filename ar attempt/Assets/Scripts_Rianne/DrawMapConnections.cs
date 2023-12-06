@@ -47,7 +47,7 @@ public class DrawMapConnections : MonoBehaviour
     public void ConnectedNodes(Node node, Button img)
     {
         path = pathfindingManager.GetPath();
-        Debug.Log(path.Count);
+        //Debug.Log(path.Count);
         nodeA = node;
         imgA = img.GetComponent<Image>();
         connections = nodeA.GetConnections();

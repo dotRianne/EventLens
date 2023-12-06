@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PathfindingManager : MonoBehaviour
@@ -22,6 +23,11 @@ public class PathfindingManager : MonoBehaviour
     enum pathState {idle, pathEndReached, goingThroughPath };
     pathState state = pathState.idle;
 
+
+    [SerializeField]
+    GameObject pathEndUI;
+    [SerializeField]
+    TextMeshProUGUI debugtext;
     void Start()
     {
         nodes = FindObjectsOfType<Node>();
@@ -38,6 +44,10 @@ public class PathfindingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentNode!=null)
+        {
+           // debugtext.text = currentNode.name;
+        }
         //Debug.Log("nodeStart is: " + nodeStart);
         if (state == pathState.goingThroughPath && currentPath.Count-1>nodeIndex)
         {
@@ -64,6 +74,8 @@ public class PathfindingManager : MonoBehaviour
             currentPath = null;
             nextNode = null;
             Debug.Log("path end reached");
+            pathEndUI.SetActive(true);
+           // mapConnections.Des
             // something happen if pathe end here
             state = pathState.idle;
             doOnce = true;
@@ -76,7 +88,7 @@ public class PathfindingManager : MonoBehaviour
     {
        // nodeStart = currentNode;
         nodeEnd = pTo;
-        
+        pathEndUI.SetActive(false);
 
         if (nodeStart != null && nodeEnd != null)
         {
@@ -107,6 +119,7 @@ public class PathfindingManager : MonoBehaviour
     {
        if (currentNode != activeNode && !cooldown)
        {
+            debugtext.text = activeNode.name;
             doOnce = false;
             cooldown = true;
             timerStart = Time.time;
@@ -177,7 +190,7 @@ public class PathfindingManager : MonoBehaviour
         {
             Node current = queue[0];
             queue.RemoveAt(0);
-            Debug.Log("BFS: considering node " + current.name+" visited: "+visited.Count+" queue: "+queue.Count);
+            //  Debug.Log("BFS: considering node " + current.name+" visited: "+visited.Count+" queue: "+queue.Count);
             visited.Add(current);
             if (current==pTo)
             {
@@ -285,7 +298,7 @@ public class PathfindingManager : MonoBehaviour
 
     public List<Node> GetPath()
     {
-        Debug.Log("GETPATH: " + currentPath.Count);
+        //Debug.Log("GETPATH: " + currentPath.Count);
         return currentPath;
     }
 }
