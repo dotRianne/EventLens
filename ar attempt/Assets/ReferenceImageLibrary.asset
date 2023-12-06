@@ -21,69 +21,19 @@ MonoBehaviour:
       m_GuidLow: 4848305765677523589
       m_GuidHigh: 2100843813081428100
     m_SerializedTextureGuid:
-      m_GuidLow: 2643004529649882887
-      m_GuidHigh: 10677130273123681019
+      m_GuidLow: 8540055730346793729
+      m_GuidHigh: 15454003982729074395
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: npcJoeri
-    m_Texture: {fileID: 2800000, guid: d1879707d69d24adfb421bde69c92c94, type: 3}
+    m_Name: nodeExit
+    m_Texture: {fileID: 2800000, guid: 895c1b015f707684dbd60954bea677d6, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5284427955685104951
       m_GuidHigh: 14920505858651216559
     m_SerializedTextureGuid:
-      m_GuidLow: 8384093242107071099
-      m_GuidHigh: 13653593495684243370
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: infoWorkshop
-    m_Texture: {fileID: 2800000, guid: 038b8a7b4862745aaadfd7c9f14e7bbd, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5519990603769907815
-      m_GuidHigh: 13497296144942986414
-    m_SerializedTextureGuid:
-      m_GuidLow: 8760793248283027627
-      m_GuidHigh: 15012178256694037273
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: Timmy
-    m_Texture: {fileID: 2800000, guid: ea8ce8ab970a7994194b172796f855d0, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5640581211586043103
-      m_GuidHigh: 17308530148197098884
-    m_SerializedTextureGuid:
-      m_GuidLow: 13403894629500490488
-      m_GuidHigh: 10152040611492624297
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: nodeExit
-    m_Texture: {fileID: 2800000, guid: 0e2492f83326ba04a9775bf9254be38c, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5304149917920432139
-      m_GuidHigh: 6267107036437959068
-    m_SerializedTextureGuid:
-      m_GuidLow: 10850444518042633846
-      m_GuidHigh: 4807318772582592827
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: nodeHallway1
-    m_Texture: {fileID: 2800000, guid: 1104067685cd96943b31da11f406b742, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5045238098674586550
-      m_GuidHigh: 6900071050038728588
-    m_SerializedTextureGuid:
-      m_GuidLow: 2739407697571847605
-      m_GuidHigh: 8852624128456368762
-    m_Size: {x: 0.1, y: 0.1}
-    m_SpecifySize: 1
-    m_Name: nodeHallway4
-    m_Texture: {fileID: 2800000, guid: 74bd9db554c926047aa2b1dabdd6da7a, type: 3}
-  - m_SerializedGuid:
-      m_GuidLow: 5423563766755519894
-      m_GuidHigh: 17124393216486374071
-    m_SerializedTextureGuid:
-      m_GuidLow: 15903451070161985589
-      m_GuidHigh: 16758394151766083082
+      m_GuidLow: 11499089662791397843
+      m_GuidHigh: 18096193677939003
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
     m_Name: nodeBoard
-    m_Texture: {fileID: 2800000, guid: fbcfa035687cdcb40a4600f6b0c691e8, type: 3}
+    m_Texture: {fileID: 2800000, guid: 9f0c31d3f91f9f943bd1f56b644a4000, type: 3}

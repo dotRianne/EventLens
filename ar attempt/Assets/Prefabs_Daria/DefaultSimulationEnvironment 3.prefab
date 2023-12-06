@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39bb24e2bd7a482ca08117fb44b8e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Image: {fileID: 2800000, guid: 1104067685cd96943b31da11f406b742, type: 3}
+  m_Image: {fileID: 2800000, guid: a44458b8081a2ae4e8d00c184c5be3c9, type: 3}
   m_ImagePhysicalSizeMeters: {x: 0.5, y: 0.5}
 --- !u!1 &713942420345557782
 GameObject:
@@ -480,7 +480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8687952604547441517
 Transform:
   m_ObjectHideFlags: 0
@@ -1349,7 +1349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c39bb24e2bd7a482ca08117fb44b8e44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Image: {fileID: 2800000, guid: fbcfa035687cdcb40a4600f6b0c691e8, type: 3}
+  m_Image: {fileID: 2800000, guid: 01ea6c92560e8514b9e77fef693485bd, type: 3}
   m_ImagePhysicalSizeMeters: {x: 0.5, y: 0.5}
 --- !u!1 &8332690531515307356
 GameObject:

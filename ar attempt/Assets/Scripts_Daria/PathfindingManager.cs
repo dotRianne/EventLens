@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PathfindingManager : MonoBehaviour
@@ -25,6 +26,8 @@ public class PathfindingManager : MonoBehaviour
 
     [SerializeField]
     GameObject pathEndUI;
+    [SerializeField]
+    TextMeshProUGUI debugtext;
     void Start()
     {
         nodes = FindObjectsOfType<Node>();
@@ -41,6 +44,10 @@ public class PathfindingManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentNode!=null)
+        {
+           // debugtext.text = currentNode.name;
+        }
         //Debug.Log("nodeStart is: " + nodeStart);
         if (state == pathState.goingThroughPath && currentPath.Count-1>nodeIndex)
         {
@@ -112,6 +119,7 @@ public class PathfindingManager : MonoBehaviour
     {
        if (currentNode != activeNode && !cooldown)
        {
+            debugtext.text = activeNode.name;
             doOnce = false;
             cooldown = true;
             timerStart = Time.time;
