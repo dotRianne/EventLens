@@ -9,12 +9,12 @@ using UnityEngine.UI;
 public class UIButtons : MonoBehaviour
 {
     public InteractionScript interactionScript;
-    public GameObject FAQ;
-    public GameObject map;
-    public GameObject menu;
-    public GameObject info;
-    public GameObject interactions;
-    public GameObject informations;
+    [SerializeField] private GameObject FAQ;
+    [SerializeField] private GameObject map;
+    [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject info;
+    [SerializeField] private GameObject interactions;
+    [SerializeField] private GameObject informations;
     public TMP_Text interactionsText;
     public TMP_Text informationsText;
 
@@ -27,16 +27,16 @@ public class UIButtons : MonoBehaviour
     public GameObject intakeBottom;
     public int intakeTextCount;
 
-    public GameObject FAQ_StudyAssociation;
-    public GameObject FAQ_Intake;
-    public GameObject FAQ_English;
-    public GameObject FAQ_Size;
-    public GameObject FAQ_Structure;
-    public GameObject FAQ_Curriculum;
+    [SerializeField] private GameObject FAQ_StudyAssociation;
+    [SerializeField] private GameObject FAQ_Intake;
+    [SerializeField] private GameObject FAQ_English;
+    [SerializeField] private GameObject FAQ_Size;
+    [SerializeField] private GameObject FAQ_Structure;
+    [SerializeField] private GameObject FAQ_Curriculum;
 
     private void Awake()
     {
-        interactionScript.canSendRaycasts = false;
+       //interactionScript.canSendRaycasts = false;
     }
     public void FAQ_Toggle()
     {
@@ -127,6 +127,7 @@ public class UIButtons : MonoBehaviour
 
     public void OpenInteractions(string text)
     {
+        Debug.Log("Inside OpenInteractions(string " + text + ")");
         interactionScript.canSendRaycasts = false;
         ResetEverything();
         interactions.SetActive(true);

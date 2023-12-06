@@ -112,51 +112,55 @@ public class PlaceTrackedImage : MonoBehaviour
     {
         string name = trackedImage.referenceImage.name;
         Vector3 pos = trackedImage.transform.position;
-        //check if npc
-        if (name.StartsWith("npc"))
+        if (name != null)
         {
-            pos.y += 0.5f;
-        }
-        //check if Node
-        //scan node and send nodereached
-        if (name.StartsWith("node"))
-        {
-            if (!mapRotationSet)
+            //check if npc
+            if (name.StartsWith("npcM"))
             {
-                if (name == nodeStart.name && cam && pathfindingManager)
+                pos.y += 0.25f;
+            }
+            //check if Node
+            //scan node and send nodereached
+            if (name.StartsWith("node"))
+            {
+                if (!mapRotationSet)
                 {
-                    Debug.Log("map rotation set");
-                    Vector3 camRotation = cam.transform.eulerAngles;
-                    camRotation.x = 0;
-                    camRotation.z = 0;
-                    camRotation.y -= 90;
-                    pathfindingManager.transform.eulerAngles = camRotation;  
-                    mapRotationSet = true;
+                    if (name == nodeStart.name && cam && pathfindingManager)
+                    {
+                        Debug.Log("map rotation set");
+                        Vector3 camRotation = cam.transform.eulerAngles;
+                        camRotation.x = 0;
+                        camRotation.z = 0;
+                        camRotation.y -= 90;
+                        pathfindingManager.transform.eulerAngles = camRotation;
+                        mapRotationSet = true;
+                    }
+                }
+                else
+                {
+                    //Debug.Log(trackedImage.name.ToString());
+                    foreach (Node node in nodes)
+                    {
+                        if (name == node.name)
+                        {
+                            pathfindingManager.nodeReached(node);
+                            // currentlyVisibleNode = true;
+                        }
+
+
+                    }
                 }
             }
             else
             {
-                //Debug.Log(trackedImage.name.ToString());
-                foreach (Node node in nodes)
-                {
-                    if (name == node.name)
-                    {
-                        pathfindingManager.nodeReached(node);
-                        // currentlyVisibleNode = true;
-                    }
+                //  currentlyVisibleNode = false;
 
-
-                }
+                GameObject prefab = spawnedPrefabs[name];
+                prefab.transform.position = pos;
+                //prefab.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                prefab.SetActive(true);
             }
         }
-        else
-        {
-          //  currentlyVisibleNode = false;
-            GameObject prefab = spawnedPrefabs[name];
-            prefab.transform.position = pos;
-            prefab.SetActive(true);
-        }
-
        /* foreach(GameObject obj in spawnedPrefabs.Values)
         {
             if (obj.name !=name)

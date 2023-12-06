@@ -37,3 +37,23 @@ MonoBehaviour:
     m_SpecifySize: 1
     m_Name: nodeBoard
     m_Texture: {fileID: 2800000, guid: 9f0c31d3f91f9f943bd1f56b644a4000, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5311906329616948554
+      m_GuidHigh: 15707175583065023928
+    m_SerializedTextureGuid:
+      m_GuidLow: 3090604154801117368
+      m_GuidHigh: 14547571603715969256
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: npcJoeri
+    m_Texture: {fileID: 2800000, guid: a44458b8081a2ae4e8d00c184c5be3c9, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5041587749885584626
+      m_GuidHigh: 10758186774647757233
+    m_SerializedTextureGuid:
+      m_GuidLow: 9589384124740299922
+      m_GuidHigh: 13656379074665244601
+    m_Size: {x: 0.1, y: 0.1}
+    m_SpecifySize: 1
+    m_Name: npcMark
+    m_Texture: {fileID: 2800000, guid: 01ea6c92560e8514b9e77fef693485bd, type: 3}

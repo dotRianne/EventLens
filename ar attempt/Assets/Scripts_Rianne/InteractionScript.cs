@@ -22,7 +22,6 @@ public class InteractionScript : MonoBehaviour
 
     void Awake()
     {
-        buttons = GetComponent<UIButtons>();
         aRRaycastManager = GetComponent<ARRaycastManager>();
         aRPlaneManager = GetComponent<ARPlaneManager>();
 
@@ -52,7 +51,7 @@ public class InteractionScript : MonoBehaviour
             // Perform raycasting
             if (Physics.Raycast(ray, out hit))
             {
-                if(npcDict.ContainsKey(hit.collider.name))
+                if (npcDict.ContainsKey(hit.collider.name))
                 {
                     buttons.OpenInteractions(npcDict[hit.collider.name]);
                 }
