@@ -5,7 +5,7 @@ using EnhancedTouch = UnityEngine.InputSystem.EnhancedTouch;
 
 public class InteractionScript : MonoBehaviour
 { 
-    public Buttons buttons;
+    public UIButtons buttons;
     internal bool canSendRaycasts = true;
 
     [SerializeField] private string[] npcNames;
@@ -22,7 +22,7 @@ public class InteractionScript : MonoBehaviour
 
     void Awake()
     {
-        buttons = GetComponent<Buttons>();
+        buttons = GetComponent<UIButtons>();
         aRRaycastManager = GetComponent<ARRaycastManager>();
         aRPlaneManager = GetComponent<ARPlaneManager>();
 

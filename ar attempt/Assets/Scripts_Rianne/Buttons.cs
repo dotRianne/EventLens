@@ -1,23 +1,20 @@
 
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour
 {
     InteractionScript interactionScript;
     public GameObject menu;
     public GameObject HUD;
+    public GameObject map;
     public GameObject exitMenu;
     public GameObject interactions;
-    public GameObject map;
     public GameObject informations;
     public TMP_Text interactionsText;
     public TMP_Text informationsText;
 
-    private void Awake()
-    {
-        interactionScript = GetComponent<InteractionScript>();
-    }
     public void OpenMenu()
     {
         interactionScript.canSendRaycasts = false;
@@ -47,19 +44,6 @@ public class Buttons : MonoBehaviour
     }
 
     public void CloseInteractions()
-    {
-        interactionScript.canSendRaycasts = true;
-        ResetEverything();
-        HUD.SetActive(true);
-    }
-
-    public void OpenMap()
-    {
-        interactionScript.canSendRaycasts = false;
-        ResetEverything();
-        map.SetActive(true);
-    }
-    public void CloseMap()
     {
         interactionScript.canSendRaycasts = true;
         ResetEverything();
