@@ -55,12 +55,7 @@ public class PathfindingManager : MonoBehaviour
             digitalPlayer.transform.LookAt(currentPath[nodeIndex+1].gameObject.transform.position);
            // digitalPlayer.transform.LookAt(guideLookAt.gameObject.transform.position);
         }
-        // after path selected
-        /* if (Input.GetMouseButtonDown(0))
-         {
-             Debug.Log(" press");
-             goThroughQueue();
-         }*/
+
         if ( cooldown && Time.time - timerStart > coolDownNewNode)
         {
            // timerStart = Time.time;
@@ -229,67 +224,8 @@ public class PathfindingManager : MonoBehaviour
         return null;
 
 
-       // findPath(pFrom, pTo);
-       // path.Reverse();
-      // printList(path);
-       // return path;
-
     }
-    /*
-    private void findPath(Node pFrom, Node pTo)
-    {
-        queue.Add(pFrom);
-        visited.Add(pFrom);
-
-        for (int i = 0; i < queue.Count; i++)
-        {
-            if (queue[i] == pTo)
-                break;
-
-            findNextNode(queue[i], pTo);
-
-        }
-        // Reconstruct the path
-
-        Node currentNodePathFinding = pTo;
-        while (currentNodePathFinding != pFrom)
-        {
-            path.Add(currentNodePathFinding);
-            currentNodePathFinding = currentNodePathFinding.GetPrevious();
-
-        }
-        path.Add(pFrom);
-
-    }
-    private void findNextNode(Node pFrom, Node pTo)
-    {
-        for (int i = 0; i < pFrom.GetConnections().Count; i++)
-        {
-               // if (checkTakenNodes(pFrom.GetConnections()[i]))
-               // {
-                    queue.Add(pFrom.GetConnections()[i]); // check if it's already in there!
-                    visited.Add(pFrom); // dont do this in for loop
-                    pFrom.GetConnections()[i].SetPrevious(pFrom);
-
-               // }
-
-
-
-        }
-    }
-
-    private bool checkTakenNodes(Node nodeToCheck)
-    {
-        for (int i = 0; i < visited.Count; i++)
-        {
-            if (nodeToCheck == visited[i])
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    */
+  
 
     private void printList(List<Node> list)
     {
