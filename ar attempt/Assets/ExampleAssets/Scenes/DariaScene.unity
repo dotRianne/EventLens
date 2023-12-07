@@ -310,8 +310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TrackedImageManager: {fileID: 1299097591}
   objectPrefabs:
-  - {fileID: 7044290115955865451, guid: f7a0de1e02bf7ff4fa41ad8ecba8b09f, type: 3}
-  - {fileID: 3370555093556078304, guid: 4f46ea7a4756c2e429f5f2cd51250fc5, type: 3}
+  - {fileID: 896432057865093795, guid: 53557b0aab3527e41994f0cc96e2847b, type: 3}
+  - {fileID: 2683228824406104172, guid: 10c004bb06c4e314687d866cbb63a57c, type: 3}
   - {fileID: 6551994089809967277, guid: 7f0ed06f56987d645b8ffe75ed3cf987, type: 3}
   - {fileID: 2598665332339139007, guid: 1a84163d67b5caf46a809d42c1b7d573, type: 3}
   nodeStart: {fileID: 1207865522}

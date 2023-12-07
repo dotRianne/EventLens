@@ -117,7 +117,7 @@ public class PlaceTrackedImage : MonoBehaviour
             //check if npc
             if (name.StartsWith("npcM"))
             {
-                pos.y += 0.25f;
+                ///pos.y += 0.25f;
             }
             //check if Node
             //scan node and send nodereached
