@@ -23,7 +23,7 @@ public class PathfindingManager : MonoBehaviour
     enum pathState {idle, pathEndReached, goingThroughPath };
     pathState state = pathState.idle;
 
-
+    [SerializeField] private GameObject spaceInfoBoard;
     [SerializeField]
     GameObject pathEndUI;
     [SerializeField]
@@ -86,7 +86,8 @@ public class PathfindingManager : MonoBehaviour
     //button click - > new pTo - > create path - > go throurgh the path
     public void newPathRequested(Node pTo) // from ui when location is pressed
     {
-       // nodeStart = currentNode;
+        // nodeStart = currentNode;
+        spaceInfoBoard.SetActive(false);
         nodeEnd = pTo;
         pathEndUI.SetActive(false);
 

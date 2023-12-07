@@ -57,7 +57,7 @@ public class InteractionScript : MonoBehaviour
                 }
                 if (infoDict.ContainsKey(hit.collider.name))
                 {
-                    buttons.OpenInformations(infoDict[hit.collider.name]);
+                    buttons.OpenInformations(/*infoDict[hit.collider.name]*/);
                 }
             }
         }

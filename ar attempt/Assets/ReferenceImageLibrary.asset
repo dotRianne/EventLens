@@ -55,5 +55,5 @@ MonoBehaviour:
       m_GuidHigh: 13656379074665244601
     m_Size: {x: 0.1, y: 0.1}
     m_SpecifySize: 1
-    m_Name: npcMark
+    m_Name: infoWorkshop
     m_Texture: {fileID: 2800000, guid: 01ea6c92560e8514b9e77fef693485bd, type: 3}

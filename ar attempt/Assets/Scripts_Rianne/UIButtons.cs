@@ -13,6 +13,7 @@ public class UIButtons : MonoBehaviour
     [SerializeField] private GameObject map;
     [SerializeField] private GameObject menu;
     [SerializeField] private GameObject info;
+    [SerializeField] private GameObject spaceInfoBoard;
     [SerializeField] private GameObject interactions;
     [SerializeField] private GameObject informations;
     public TMP_Text interactionsText;
@@ -139,12 +140,22 @@ public class UIButtons : MonoBehaviour
         ResetEverything();
         menu.SetActive(true);
     }
-    public void OpenInformations(string text)
+    public void OpenInformations(/*string text*/)
     {
         interactionScript.canSendRaycasts = false;
         ResetEverything();
         informations.SetActive(true);
-        informationsText.SetText(text);
+        //informationsText.SetText(text);
+    }
+    public void SpaceInfoBoard()
+    {
+        interactionScript.canSendRaycasts = false;
+        spaceInfoBoard.SetActive(true);
+    }
+    public void CloseSpaceInfoBoard()
+    {
+        interactionScript.canSendRaycasts = false;
+        spaceInfoBoard.SetActive(false);
     }
     public void CloseInformations()
     {
