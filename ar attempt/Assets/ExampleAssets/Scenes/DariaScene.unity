@@ -190,6 +190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CMGaTo_Cat
       objectReference: {fileID: 0}
+    - target: {fileID: 5909104221132803542, guid: 19a1f607617dbe7479e0b694faecde63,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6434107126667384684, guid: 19a1f607617dbe7479e0b694faecde63,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1866,7 +1871,7 @@ PrefabInstance:
     - target: {fileID: 4461624757475662124, guid: 4781f35074b10114ba1b139e168bee67,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4551263463334579475, guid: 4781f35074b10114ba1b139e168bee67,
         type: 3}

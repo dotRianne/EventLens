@@ -10,12 +10,9 @@ public class Guide : MonoBehaviour
     GameObject digitalPlayer;
 
     
-    Camera cam;
-    
     // Start is called before the first frame update
     void Start()
     {
-        cam = FindObjectOfType<Camera>();
         
     }
 
@@ -24,6 +21,5 @@ public class Guide : MonoBehaviour
     {
         
         transform.rotation= digitalPlayer.transform.rotation;
-        //transform.position = cam.transform.position+ new Vector3(0,0,3);
     }
 }
